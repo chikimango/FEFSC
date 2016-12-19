@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 31, 2016, 3:16:35 AM
+    Author     : Melanie
+*/
+
+.textArea {
+    -fx-font-size: 14px;
+    -fx-font-family: "FOT-Chiaro Std B";
+}
+
+.textArea2 {
+	-fx-font-size: 15px;
+    -fx-font-family: "FOT-Chiaro Std B";
+	-fx-background-color: transparent;
+	-fx-text-fill: #3B0000;
+}
+.textArea2 .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.textArea2 .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.textArea2 .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.textArea3 {
+	-fx-font-size: 15px;
+    -fx-font-family: "FOT-Chiaro Std B";
+	-fx-background-color: transparent;
+	-fx-text-fill: #FFF1B6;
+}
+
+.textArea3 .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.textArea3 .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.textArea3 .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.button1 {
+	-fx-background-color: transparent;
+    -fx-font-size: 12px;
+	-fx-text-fill: #22C991;
+}
+
+.button1:hover {
+	-fx-text-fill: #3DF1B6;
+}
+
+
+
+
