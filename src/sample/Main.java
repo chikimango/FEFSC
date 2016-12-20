@@ -43,6 +43,8 @@ public class Main extends Application {
         final Scene scene = new Scene(pane, 562, 960);
         Font.loadFont(Main.class.getResource("/fonts/Chiaro.otf").toExternalForm(), 14);
         scene.getStylesheets().add(this.getClass().getResource("font.css").toExternalForm());
+        Image icon = new Image(this.getClass().getResourceAsStream("/icon.png"));
+        primaryStage.getIcons().add(icon);
 
         /*
          *Choice Box that shows all the characters the user can choose
