@@ -710,7 +710,7 @@ public class Main extends Application {
                     }
                 }
 
-                //replace a shit ton of words for syntax corrections (mostly for mentions of the avatar)
+                //replace words for syntax corrections (mostly for mentions of the avatar)
                 dialogue = dialogue.replace("…", "...");
                 dialogue = dialogue.replace(" \\n", "\\n");
                 dialogue = dialogue.replace("\\n ", "\\n");
@@ -825,14 +825,20 @@ public class Main extends Application {
                 }
 
                 //Support Line effects configurations
-                if (effectComboBox1.getValue() == "Character 1\nAppears" || effectComboBox2.getValue()
-                        == "Character 1\nAppears" && effectComboBox2.getValue() != "New Character\nAppears") {
+                if (effectComboBox1.getValue() == "Character 1\nAppears") {
                     supportLine = "\\n$Wm" + chara1 + "|3$Ws" + chara1
                             + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 2\nAppears" || effectComboBox2.getValue()
-                        == "Character 1\nAppears" && effectComboBox2.getValue() != "New Character\nAppears") {
+                if (effectComboBox1.getValue() == "Character 2\nAppears") {
                     supportLine = "\\n$Wm" + chara2 + "|7$Ws" + chara2
+                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                }
+                if (effectComboBox1.getValue() == "Character 1\nAppears" && chara2Btn.isSelected()) {
+                    supportLine = "\\n$Wm" + chara1 + "|3$Ws" + chara2
+                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                }
+                if (effectComboBox1.getValue() == "Character 2\nAppears" && chara1Btn.isSelected()) {
+                    supportLine = "\\n$Wm" + chara2 + "|7$Ws" + chara1
                             + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
                 if (effectComboBox1.getValue() == "Character 1\nAppears" && effectComboBox2.getValue()
