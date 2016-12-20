@@ -49,7 +49,7 @@ For the 1st/2nd Character Buttons: You select these depending on who is saying t
 
 If you look at a video of a support from FE:F or FE:A you see that a character usually doesn't stop talking after one box of dialogue. So basically, you want to select the 1st/2nd buttons at the start of when a character is speaking or when the speaker changes. If the character keeps speaking after that, you select the "same" button.
 
-For the Appears Alone Button: This button will only be selectable when you've selected the First Line Button or when you've chosen the "Fade to Black" effect option that is explained later. You only press this button if your character, well, appears alone whenever the characters have to be initailized. Which is only at the beginning of the support or after a fade to black scene. **You need to initallize the 2nd character in Effects Options _when they first appear_ by selecting "Character 1/2 Appears".** More information about those options and what they do/can do is further down.
+For the Appears Alone Button: This button will only be selectable when you've selected the First Line Button or when you've chosen the "Fade to Black" effect option that is explained later. You only press this button if the speaking character appears alone whenever the characters have to be initailized, which is only at the beginning of the support or after a fade to black scene. **You'll need to initallize the other character in Effects Options _when they first appear_ by selecting "Character 1/2 Appears".** More information about those options and what they do/can do is further down.
 
 
 ## Displayed Emotion & Portrait Viewer
@@ -76,16 +76,24 @@ But first, sound effects! As that is much faster to explain. Basically there's a
 
 Alright, so Effects. First, here are all the options for the first box.
 > Default Line: Does nothing.
+
 > Screen Fades to Black
+
 > Character 1 Appears: This is really only used if character 2 is alone.
+
 > Character 2 Appears: Same as above except with character 1.
+
 > Character 1 Left: Note the past tense. This makes character 1 dissapear from view.
+
 > Character 2 Left: Same as above for character 2.
+
 > Add Sound Effect
 
 The second box has three options.
 > No other Effect: Does nothing
+
 > New Character Appears
+
 > Add Sound Effect
 
 Here's what you need to know for every option:
