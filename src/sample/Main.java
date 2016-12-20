@@ -31,7 +31,7 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage primaryStage) {
-        primaryStage.setTitle("FEIF Support Coder");
+        primaryStage.setTitle("Fire Emblem: Support Coder");
         primaryStage.setWidth(568);
         primaryStage.setHeight(1000);
         primaryStage.setResizable(false);
