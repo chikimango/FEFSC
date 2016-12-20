@@ -14,13 +14,13 @@ If the import for StringUtils is not working, go to *File -> Project Structure -
 The program is relatively straightforward if you already have previous knowledge of how to code supports, but here are explanations for each feature.
 
 
-### Character Options:
+## Character Options:
 ![Imgur](http://i.imgur.com/3pRe2YW.png)
 
 Fairly straightforward: This is where you choose the names of the two characters who **appear first** in the support. Character 1 will appear on the left of the screen and character 2 will appear on the right. How to handle adding, removing, or replacing characters from the support will be explained in the Effects Options.
 
 
-### Dialogue Input:
+## Dialogue Input:
 ![Imgur](http://i.imgur.com/MBHa0p7.png)
 
 Again fairly straightforward: Just write in (or copy and paste) the first line of dialogue from your support. 
@@ -33,7 +33,7 @@ What "Don't forget to add "\n" if the text wraps" means is: If your dialogue is 
 This is to indicate a newline and is best done after you've finished typing all of your dialogue. If your dialogue goes over the box's porportions after adding the "\n" don't worry, the "\n" will dissapear in-game and in FEITS. What matters is if your dialogue alone goes over the porportions.
 
 
-### First Line Button & Song Options
+## First Line Button & Song Options
 ![Imgur](http://i.imgur.com/MhsfyVI.png)
 
 There isn't much to explain here, but it is important. **The "first line" button should only be selected if you are on the first line of your support. You only select it once when creating your entire support.** This button will add code to make the game initiallize the characters on the screen and what music is playing. **Again, it is very important that you press this at the beginning of your support or else the support will not work correctly in-game OR in FEITS.**
@@ -41,7 +41,7 @@ There isn't much to explain here, but it is important. **The "first line" button
 I think the song choices is pretty self-explanatory, you just choose which song you want to play in your support in-game. You can choose none if you'd like, and there are play/pause buttons on the right to sample the songs. This combo-box will only be enabled when the first line button is selected, because the song is initiallized at the beginning of the support.
 
 
-### Character Speaking Buttons & The "Appears Alone" Button
+## Character Speaking Buttons & The "Appears Alone" Button
 ![Imgur](http://i.imgur.com/obgejEW.png)
 
 This is fairly simple, but can be confusing if you're coding supports for the first time. 
@@ -52,7 +52,7 @@ If you look at a video of a support from FE:F or FE:A you see that a character u
 For the Appears Alone Button: This button will only be selectable when you've selected the First Line Button or when you've chosen the "Fade to Black" effect option that is explained later. You only press this button if your character, well, appears alone whenever the characters have to be initailized. Which is only at the beginning of the support or after a fade to black scene. **You need to initallize the 2nd character in Effects Options _when they first appear_ by selecting "Character 1/2 Appears".** More information about those options and what they do/can do is further down.
 
 
-### Displayed Emotion & Portrait Viewer
+## Displayed Emotion & Portrait Viewer
 ![Imgur](http://i.imgur.com/SerRt6h.png)
 
 Not much to explain, here you choose what face the character is making. If the character is blushing or sweating you just select the blushing/sweat buttons. You can select both if you want to.
@@ -64,7 +64,7 @@ You can view the portraits of the character if you've selected the 1st character
 Which as you can see, displays either the 1st or 2nd character you've chosen in the character options and the emotion you've selected for them. **If you have "Same as Previous Character" selected no portrait will show**, so just select the 1st/2nd button and reselect "Same as Previous Character" when you're done. **Don't forget to reselect it!**
 
 
-### Effects Options & Sound Effects
+## Effects Options & Sound Effects
 ![Imgur](http://i.imgur.com/GAP3foc.png)
 
 This is where things get lengthy and possibly confusing, so bear with me! There are a lot of options and combinations to cover that are very important, so I'll be explaining each option in Effects. 
@@ -102,7 +102,7 @@ If you want to add a character after one has already left, just replace the name
 
 And that's it for effects. It might sound a bit daunting, but it's very easy to get into the rythm of it. It's all just trial and error!
 
-### "Add Line" Button & Support Output
+## "Add Line" Button & Support Output
 ![Imgur](http://i.imgur.com/QoeWozt.png)
 
 When you're finished choosing the options for the dialogue you've inputted, click the "Add Line" button, and the program will take your dialogue and code it appropriately. The coded dialogue will be placed into the the area below the button. 
