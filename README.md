@@ -11,7 +11,7 @@ The simplest way to compile this is by:
 If the import for StringUtils is not working, go to *File -> Project Structure -> Libraries* and add the jars in the Library folder. Add "commons-lang" first, and then add all of the "controlsfx" jars together seperately from "commons-lang".
 
 # How to Use
-The program is relatively straightforward if you already have previous knowledge of how to code supports, but here are explanations for each feature.
+The program is relatively straightforward if you already have previous knowledge on how to code supports, but here are explanations for each feature.
 
 
 ## Character Options:
