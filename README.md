@@ -71,7 +71,9 @@ This is where things get lengthy and possibly confusing, so bear with me! There 
 
 But first, sound effects! As that is much faster to explain. Basically there's an option in Effects for adding sound effects, when you select that option the Sound Effects options will be enabled. Just choose which one you'd like. There's no way to play so here's what the options are:
 > "Body Fall" is the sound effect that plays when, well, a body falls. An example for that is in Kaze and Silas's C support.
+
 > "Damage" plays when a character recieves damage. There's an example of it in Kaze and Silas's C support as well.
+
 > "Dish Break"- I think it's pretty obvious what this is. If you need an example, this sound plays in almost every Felicia support.
 
 Alright, so Effects. First, here are all the options for the first box.
