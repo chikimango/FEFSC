@@ -72,7 +72,7 @@ Note: The "Same as Previous Emotion" option works the same way as the "Same as P
 ### Effects Options & Sound Effects
 ![Imgur](http://i.imgur.com/GAP3foc.png)
 
-This is where things get lengthy and possibly confusing. There quite a few options and combinations to cover that are very important, so I'll be explaining each option in Effects. 
+This is where things get lengthy and possibly confusing. There are quite a few options and combinations to cover that are very important, so I'll be explaining each option in Effects. 
 
 But first, sound effects, as that is much faster to explain. Basically there's an option in Effects for adding sound effects. When you select that option the Sound Effects options will be enabled. Just choose which one you'd like. There's no way to play the options so here's a description for each:
 > "Body Fall" is the sound effect that plays when, well, a body falls. An example for that is in Kaze and Silas's C support.
