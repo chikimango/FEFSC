@@ -32,7 +32,7 @@ What "Don't forget to add "\n" if the text wraps" means is thart if your dialogu
 
 This is to indicate a newline and is best done after you've finished typing all of your dialogue. If your dialogue goes over the box's proportions after adding the "\n" don't worry, the "\n" will dissapear in-game and in FEITS. What matters is if your dialogue alone goes over the proportions. 
 
-If you don't add the "\n" this is how it'll look in FEITS and in-game.
+If you don't add the "\n" this is how it'll look in FEITS and in-game:
 
 ![Imgur](http://i.imgur.com/zKAkTQ9.png)
 
