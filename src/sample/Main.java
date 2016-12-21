@@ -21,7 +21,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 import javafx.stage.*;
 import javafx.scene.image.*;
 import java.net.URL;
@@ -44,6 +44,7 @@ public class Main extends Application {
         scene.getStylesheets().add(this.getClass().getResource("font.css").toExternalForm());
         Image icon = new Image(this.getClass().getResourceAsStream("/icon.png"));
         primaryStage.getIcons().add(icon);
+
 
         /*
          *Choice Box that shows all the characters the user can choose
@@ -663,14 +664,16 @@ public class Main extends Application {
                 String dialogue = (dialogueArea.getText());
                 String chara1 = (characters1.getValue().toString());
                 if (chara1.contains("(")) {
-                    chara1 = StringUtils.substringBetween(chara1, "(", ")");
+                    chara1 = chara1.substring(chara1.indexOf("(") + 1, chara1.indexOf(")"));
                 }
                 String chara2 = (characters2.getValue().toString());
                 if (chara2.contains("(")) {
-                    chara2 = StringUtils.substringBetween(chara2, "(", ")");
+                    chara2 = chara2.substring(chara2.indexOf("(") + 1, chara2.indexOf(")"));
                 }
                 String newChara = (newCharaField.getValue().toString());
-                newChara = StringUtils.substringBetween(newChara, "(", ")");
+                if (newChara.contains("(")) {
+                    newChara = newChara.substring(newChara.indexOf("(") + 1, newChara.indexOf(")"));
+                }
                 String supportLine = "";
 
                 String emotEffect = "";
@@ -696,7 +699,7 @@ public class Main extends Application {
                             double height = txt.getBoundsInLocal().getHeight();
                             if (height > 19.951171875) {
                                 s = txt.getText();
-                                s = StringUtils.substring(s, 0, s.length() - 1);
+                                s = s.substring(0, s.length() - 1);
                                 txt.setText(s);
                                 l = txt.getText().length();
                                 //System.out.println(txt.getBoundsInLocal().getHeight() + " " + s);
@@ -710,38 +713,45 @@ public class Main extends Application {
                     }
                 }
 
-                //replace words for syntax corrections (mostly for mentions of the avatar)
+                //replace a shit ton of words for syntax corrections (mostly for mentions of the avatar)
                 dialogue = dialogue.replace("…", "...");
                 dialogue = dialogue.replace(" \\n", "\\n");
                 dialogue = dialogue.replace("\\n ", "\\n");
                 dialogue = dialogue.replace(" \\n ", "\\n");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "[avatar]", "$Nu");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "(avatar)", "$Nu");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "avatar", "$Nu");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "Corrin", "$Nu");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "Kamui", "$Nu");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "lord/lady", "$GLord,Lady|");
-                dialogue = StringUtils.replaceIgnoreCase(dialogue, "lady/lord", "$GLord,Lady|");
-                dialogue = StringUtils.replace(dialogue, "his/her", "$Ghis,her|");
-                dialogue = StringUtils.replace(dialogue, "her/his", "$Ghis,her|");
-                dialogue = StringUtils.replace(dialogue, "His/Her", "$GHis,Her|");
-                dialogue = StringUtils.replace(dialogue, "Her/His", "$GHis,Her|");
-                dialogue = StringUtils.replace(dialogue, "she/he", "$Ghe,she|");
-                dialogue = StringUtils.replace(dialogue, "he/she", "$Ghe,she|");
-                dialogue = StringUtils.replace(dialogue, "She/He", "$GHe,She|");
-                dialogue = StringUtils.replace(dialogue, "He/She", "$GHe,She|");
-                dialogue = StringUtils.replace(dialogue, "She's/He's", "$GHe's,She's|");
-                dialogue = StringUtils.replace(dialogue, "He's/She's", "$GHe's,She's|");
-                dialogue = StringUtils.replace(dialogue, "she's/he's", "$Ghe's,she's|");
-                dialogue = StringUtils.replace(dialogue, "he's/she's", "$Ghe's,she's|");
-                dialogue = StringUtils.replace(dialogue, "herself/himself", "$Ghimself,herself|");
-                dialogue = StringUtils.replace(dialogue, "himself/herself", "$Ghimself,herself|");
-                dialogue = StringUtils.replace(dialogue, "Herself/Himself", "$GHimself,Herself|");
-                dialogue = StringUtils.replace(dialogue, "Himself/Herself", "$GHimself,Herself|");
-                dialogue = StringUtils.replace(dialogue, "Him/Her", "$GHim,Her|");
-                dialogue = StringUtils.replace(dialogue, "Her/Him", "$GHim,Her|");
-                dialogue = StringUtils.replace(dialogue, "her/him", "$Ghim,her|");
-                dialogue = StringUtils.replace(dialogue, "her/him", "$Ghim,her|");
+                dialogue = dialogue.replace("[avatar]", "$Nu");
+                dialogue = dialogue.replace("(avatar)", "$Nu");
+                dialogue = dialogue.replace("avatar", "$Nu");
+                dialogue = dialogue.replace("[Avatar]", "$Nu");
+                dialogue = dialogue.replace("(Avatar)", "$Nu");
+                dialogue = dialogue.replace("Avatar", "$Nu");
+                dialogue = dialogue.replace("Corrin", "$Nu");
+                dialogue = dialogue.replace("Kamui", "$Nu");
+                dialogue = dialogue.replace("corrin", "$Nu");
+                dialogue = dialogue.replace("kamui", "$Nu");
+                dialogue = dialogue.replace("lord/lady", "$GLord,Lady|");
+                dialogue = dialogue.replace("Lord/Lady", "$GLord,Lady|");
+                dialogue = dialogue.replace("lady/lord", "$GLord,Lady|");
+                dialogue = dialogue.replace("Lady/Lord", "$GLord,Lady|");
+                dialogue = dialogue.replace("his/her", "$Ghis,her|");
+                dialogue = dialogue.replace("her/his", "$Ghis,her|");
+                dialogue = dialogue.replace("His/Her", "$GHis,Her|");
+                dialogue = dialogue.replace("Her/His", "$GHis,Her|");
+                dialogue = dialogue.replace("she/he", "$Ghe,she|");
+                dialogue = dialogue.replace("he/she", "$Ghe,she|");
+                dialogue = dialogue.replace("She/He", "$GHe,She|");
+                dialogue = dialogue.replace("He/She", "$GHe,She|");
+                dialogue = dialogue.replace("She's/He's", "$GHe's,She's|");
+                dialogue = dialogue.replace("He's/She's", "$GHe's,She's|");
+                dialogue = dialogue.replace("she's/he's", "$Ghe's,she's|");
+                dialogue = dialogue.replace("he's/she's", "$Ghe's,she's|");
+                dialogue = dialogue.replace("herself/himself", "$Ghimself,herself|");
+                dialogue = dialogue.replace("himself/herself", "$Ghimself,herself|");
+                dialogue = dialogue.replace("Herself/Himself", "$GHimself,Herself|");
+                dialogue = dialogue.replace("Himself/Herself", "$GHimself,Herself|");
+                dialogue = dialogue.replace("Him/Her", "$GHim,Her|");
+                dialogue = dialogue.replace("Her/Him", "$GHim,Her|");
+                dialogue = dialogue.replace("her/him", "$Ghim,her|");
+                dialogue = dialogue.replace("her/him", "$Ghim,her|");
 
                 //support line should have "\n" at the beginning if it's not the first line
 
@@ -757,9 +767,12 @@ public class Main extends Application {
                 }
 
                 //emotion configuration
-                String emotion = "$E" + StringUtils.substringBetween(emotComboBox.getValue().toString(), "(", ")") + "," + emotEffect + "|";
+                String emotion = emotComboBox.getValue().toString();
+                if (emotion.contains("(")) {
+                    emotion = "$E" + emotion.substring(emotion.indexOf("(") + 1, emotion.indexOf(")")) + "," + emotEffect + "|";
+                }
 
-                if (StringUtils.substringBetween(emotComboBox.getValue().toString(), "(", ")").equals("通常") && !sweatBtn.isSelected()
+                if (emotion.equals("通常") && !sweatBtn.isSelected()
                         && !blushingBtn.isSelected() && !sameChara.isSelected()) {
                     emotion = "";
                 }
@@ -1034,13 +1047,20 @@ public class Main extends Application {
                 }
 
                 if (chara1.contains("(")) {
-                    chara1 = StringUtils.substringBetween(chara1, "(", ")");
+                    int a = chara1.indexOf("(") + 1;
+                    int b = chara1.indexOf(")");
+                    chara1 = chara1.substring(a, b);
                 }
                 if (chara2.contains("(")) {
-                    chara2 = StringUtils.substringBetween(chara2, "(", ")");
+                    int a = chara2.indexOf("(") + 1;
+                    int b = chara2.indexOf(")");
+                    chara2 = chara2.substring(a, b);
                 }
 
-                String emotion = StringUtils.substringBetween(emotComboBox.getValue().toString(), "(", ")");
+
+                String emotion = emotComboBox.getValue().toString().substring(
+                        emotComboBox.getValue().toString().indexOf("(") + 1,
+                        emotComboBox.getValue().toString().indexOf(")"));
                 String portraitPath = "";
                 String portraitPath2 = "";
                 String portraitPath3 = "";
@@ -1157,15 +1177,16 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 String chara = characters1.getValue().toString();
                 if (chara.contains("(")) {
-                    chara = StringUtils.substringBetween(chara, "(", ")");
+                    int a = chara.indexOf("(") + 1;
+                    int b = chara.indexOf(")");
+                    chara = chara.substring(a, b);
                 }
 
                 String[] delete = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)",
-                        "Angry (怒)", "-------------------", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)",
-                        "Demonic (超キメ)", "Surprised (びっくり)", "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)",
-                        "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)", "Smile 2 (微笑)", " Distress 2 (苦2)",
-                        "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Closed Eyes (思案)", "(超怒)", "(にやり)",
-                        "(焦り)", "(あらら)", "(目閉)"};
+                        "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
+                        "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
+                        "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Sad 2 (あらら)", "Closed Eyes (目閉)"};
                 String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
@@ -1248,38 +1269,32 @@ public class Main extends Application {
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.getItems().add("Neutral 2 (通常2)");
                     if (chara.equals("ラズワルド")) {
-                        emotComboBox.getItems().add("(あらら)");
+                        emotComboBox.getItems().add("Sad 2 (あらら)");
                     }
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("シャーロッテ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(超怒)");
+                    emotComboBox.getItems().add("(Angry 2 (超怒)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("ゼロ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(にやり)");
+                    emotComboBox.getItems().add("Smirk (にやり)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("クロム右") || chara.equals("クロム左") || chara.equals("フェリシア")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(焦り)");
-                    emotComboBox.setValue("Neutral (通常)");
-                }
-                if (chara.equals("アズール")) {
-                    emotComboBox.getItems().removeAll(delete);
-                    emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(あらら)");
+                    emotComboBox.getItems().add("Surprised (焦り)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("ニシキ") || chara.equals("フレデリク") || chara.equals("リョウマ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(目閉)");
+                    emotComboBox.getItems().add("Closed Eyes (目閉)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
 
@@ -1305,14 +1320,16 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 String chara = characters2.getValue().toString();
                 if (chara.contains("(")) {
-                    chara = StringUtils.substringBetween(chara, "(", ")");
+                    int a = chara.indexOf("(") + 1;
+                    int b = chara.indexOf(")");
+                    chara = chara.substring(a, b);
                 }
-
+                
                 String[] delete = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)",
                         "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
                         "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
-                        "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "(にやり)",
-                        "Closed Eyes (思案)", "(超怒)", "(焦り)", "(あらら)", "(目閉)"};
+                        "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Sad 2 (あらら)", "Closed Eyes (目閉)"};
                 String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
@@ -1395,38 +1412,32 @@ public class Main extends Application {
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.getItems().add("Neutral 2 (通常2)");
                     if (chara.equals("ラズワルド")) {
-                        emotComboBox.getItems().add("(あらら)");
+                        emotComboBox.getItems().add("Sad 2 (あらら)");
                     }
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("シャーロッテ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(超怒)");
+                    emotComboBox.getItems().add("(Angry 2 (超怒)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("ゼロ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(にやり)");
+                    emotComboBox.getItems().add("Smirk (にやり)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("クロム右") || chara.equals("クロム左") || chara.equals("フェリシア")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(焦り)");
-                    emotComboBox.setValue("Neutral (通常)");
-                }
-                if (chara.equals("アズール")) {
-                    emotComboBox.getItems().removeAll(delete);
-                    emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(あらら)");
+                    emotComboBox.getItems().add("Surprised (焦り)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
                 if (chara.equals("ニシキ") || chara.equals("フレデリク") || chara.equals("リョウマ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
-                    emotComboBox.getItems().add("(目閉)");
+                    emotComboBox.getItems().add("Closed Eyes (目閉)");
                     emotComboBox.setValue("Neutral (通常)");
                 }
 
@@ -1454,7 +1465,6 @@ public class Main extends Application {
                 musicStage.close();
             }
         });
-
     }
 
 
