@@ -1,5 +1,5 @@
-# FESC
-Fire Emblem Support Coder
+# FEFSC
+Fire Emblem Fates: Support Coder
 
 A JavaFX program that assists in coding supports for Fire Emblem 3ds games
 
