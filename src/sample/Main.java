@@ -30,7 +30,7 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage primaryStage) {
-        primaryStage.setTitle("Fire Emblem: Support Coder");
+        primaryStage.setTitle("Fire Emblem: Fates Support Coder");
         primaryStage.setWidth(568);
         primaryStage.setHeight(1000);
         primaryStage.setResizable(false);
@@ -55,9 +55,7 @@ public class Main extends Application {
         character1.setTranslateX(20);
 
         //final TextField characters1 = new TextField();
-        final ComboBox characters1 = new ComboBox();
-        characters1.setItems(FXCollections.observableArrayList(
-                "Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
+        String characters [] = {"Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
                 "Azura \t\t(アクア)", "Benny \t\t(ブノワ)", "Beruka \t\t(ベルカ)", "Camilla \t\t(カミラ)", "Charlotte \t\t(シャーロッテ)",
                 "Effie \t\t\t(エルフィ)", "Elise \t\t(エリーゼ)", "Felicia \t\t(フェリシア)", "Flora \t\t(フローラ)", "Fuga \t\t(フウガ)",
                 "Gunter \t\t(ギュンター)", "Hana \t\t(カザハナ)", "Hayato \t\t(ツクヨミ)", "Hinata \t\t(ヒナタ)", "Hinoka \t\t(ヒノカ)",
@@ -91,8 +89,9 @@ public class Main extends Application {
                 "Daniela \t\t(ダニエラ)", "Haitaka \t\t(ハイタカ)", "Kumagera \t(クマゲラ)", "Lloyd \t\t(ウィリアム)", "Llewelyn \t\t(ホルモン)",
                 "Gazak \t\t(カザック)", "Tarba \t\t(バンバ)", "Funke \t\t(ファンク)", "Daichi \t\t(ダイチ)", "Senno \t\t(セノウ)",
                 "Zhara \t\t(ヴァスハラ)", "Kilma \t\t(クーリア)", "Nichol \t\t(ナハト)", "Candace \t\t(ドラジェ)", "Lilith \t\t(リリス)",
-                "Lilith \t\t(リリス竜)", "Layla \t\t(ララ)", "Anthony \t\t(ロンタオ)", "Sage \t\t(虹の賢者)", "Cassita \t\t(カシータ)", "??? \t\t\t(フードマン)"
-        ));
+                "Lilith \t\t(リリス竜)", "Layla \t\t(ララ)", "Anthony \t\t(ロンタオ)", "Sage \t\t(虹の賢者)", "Cassita \t\t(カシータ)", "??? \t\t\t(フードマン)"};
+        final ComboBox characters1 = new ComboBox();
+        characters1.setItems(FXCollections.observableArrayList(characters));
         pane.add(characters1, 1, 0, 3, 1);
         characters1.setPrefWidth(145);
         new AutoCompleteComboBox(characters1);
@@ -107,86 +106,14 @@ public class Main extends Application {
         character2.setTranslateX(15);
 
         final ComboBox characters2 = new ComboBox();
-        characters2.setItems(FXCollections.observableArrayList(
-                "Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
-                "Azura \t\t(アクア)", "Benny \t\t(ブノワ)", "Beruka \t\t(ベルカ)", "Camilla \t\t(カミラ)", "Charlotte \t\t(シャーロッテ)",
-                "Effie \t\t\t(エルフィ)", "Elise \t\t(エリーゼ)", "Felicia \t\t(フェリシア)", "Flora \t\t(フローラ)", "Fuga \t\t(フウガ)",
-                "Gunter \t\t(ギュンター)", "Hana \t\t(カザハナ)", "Hayato \t\t(ツクヨミ)", "Hinata \t\t(ヒナタ)", "Hinoka \t\t(ヒノカ)",
-                "Izana \t\t(イザナ)", "Jakob \t\t(ジョーカー)", "Kaden \t\t(ニシキ)", "Kagero \t\t(カゲロウ)", "Kaze \t\t(スズカゼ)",
-                "Keaton \t\t(フランネル)", "Laslow \t\t(ラズワルド)", "Leo \t\t\t(レオン)", "Mozu \t\t(モズメ)", "Niles \t\t(ゼロ)",
-                "Nyx \t\t\t(ニュクス)", "Oboro \t\t(オボロ)", "Odin \t\t(オーディン)", "Orochi \t\t(オロチ)", "Peri \t\t\t(ピエリ)",
-                "Reina \t\t(ユウギリ)", "Rinkah \t\t(リンカ)", "Ryoma \t\t(リョウマ)", "Saizo \t\t(サイゾウ)", "Sakura \t\t(サクラ)",
-                "Scarlet \t\t(クリムゾン)", "Selena \t\t(ルーナ)", "Setsuna \t\t(セツナ)", "Shura \t\t(アシュラ)", "Silas \t\t(サイラス)",
-                "Subaki \t\t(ツバキ)", "Takumi \t\t(タクミ)", "Xander \t\t(マークス)", "Yukimura \t(ユキムラ)",
-                "----------------------------------",
-                "Kana [F] \t\t(カンナ女)", "Kana [M] \t\t(カンナ男)", "Asugi \t\t(グレイ)", "Caeldori \t\t(マトイ)", "Dwyer \t\t(ディーア)",
-                "Forrest \t\t(フォレオ)", "Hisame \t\t(ヒサメ)", "Ignatius \t\t(イグニス)", "Kiragi \t\t(キサラギ)", "Midori \t\t(ミドリコ)",
-                "Mitama \t\t(ミタマ)", "Nina \t\t(エポニーヌ)", "Ophelia \t\t(オフェリア)", "Percy \t\t(ルッツ)", "Rhajat \t\t(シャラ)",
-                "Selkie \t\t(キヌ)", "Shigure \t\t(シグレ)", "Shiro \t\t(シノノメ)", "Siegbert \t\t(ジークベルト)", "Soleil \t\t(ソレイユ)",
-                "Sophie \t\t(ゾフィー)", "Velouria \t\t(べロア)",
-                "---------------------------------",
-                "Marth \t\t(マルス)", "Ike \t\t\t(アイク)", "Lucina \t\t(ルキナ)", "Robin \t\t(ルフレ)",
-                "_________________________________",
-                "Faceless \t\t(ノスフェラトゥ)", "Kitsune \t\t(妖狐男)", "Wolfskin \t\t(ガルー男)", "Ninja \t\t(忍男)", "Merchant \t(大商人男)",
-                "Apothecary \t(薬商人男)", "Pegasus Knight(天馬武者女)", "Archer \t\t(弓使い男)", "Oni Savage \t(鬼人男)", "Kinshi Knight \t(金鵄武者女)",
-                "Lancer \t\t(槍術士男)", "Priestess \t\t(戦巫女)", "Shrine Maiden (巫女)", "Mage \t\t(呪い師男)", "Dark Mage \t(ダークマージ男)",
-                "Troubadour \t(ロッドナイト女)", "Soldier \t\t(ランサー男)", "Myrmidon \t(侍男)", "Maid \t\t(メイド女)", "Paladin \t\t(パラディン男)",
-                "Cavalier \t\t(ソシアルナイト男)", "Fighter \t\t(アクスファイター男)", "Knight \t\t(アーマーナイト男)",
-                "-----------------------------------",
-                "Old Man \t\t(村人おじいさん白)", "Old Woman \t(村人おばさん白)", "Girl \t\t\t(村人お姉さん白)", "Boy \t\t\t(村人お兄さん白)",
-                "Child \t\t(村人子供白)", "Old Man \t\t(村人おじいさん黒)", "Old Woman \t(村人おばさん黒)", "Girl \t\t\t(村人お姉さん黒)",
-                "Boy \t\t\t(村人お兄さん黒)", "Child \t\t(村人子供黒)", "Villager [F] \t(村人女)", "Villager [M] \t(村人男)",
-                "------------------------------------",
-                "Hans \t\t(ガンズ)", "Iago \t\t(マクベス)", "Garon \t\t(ガロン)", "Kotaro \t\t(コタロウ)", "Zola \t\t\t(ゾーラ)",
-                "Sumeragi \t(スメラギ)", "Arete \t\t(シェンメイ)", "Mikoto \t\t(ミコト)", "Anankos \t\t(善ハイドラ)", "Omozu \t\t(モズ)",
-                "Daniela \t\t(ダニエラ)", "Haitaka \t\t(ハイタカ)", "Kumagera \t(クマゲラ)", "Lloyd \t\t(ウィリアム)", "Llewelyn \t\t(ホルモン)",
-                "Gazak \t\t(カザック)", "Tarba \t\t(バンバ)", "Funke \t\t(ファンク)", "Daichi \t\t(ダイチ)", "Senno \t\t(セノウ)",
-                "Zhara \t\t(ヴァスハラ)", "Kilma \t\t(クーリア)", "Nichol \t\t(ナハト)", "Candace \t\t(ドラジェ)", "Lilith \t\t(リリス)",
-                "Lilith \t\t(リリス竜)", "Layla \t\t(ララ)", "Anthony \t\t(ロンタオ)", "Sage \t\t(虹の賢者)", "Cassita \t\t(カシータ)", "??? \t\t\t(フードマン)"
-        ));
+        characters2.setItems(FXCollections.observableArrayList(characters));
         pane.add(characters2, 1, 1, 3, 1);
         characters2.setPrefWidth(145);
         new AutoCompleteComboBox(characters2);
         characters2.setValue("");
 
         final ComboBox newCharaField = new ComboBox();
-        newCharaField.setItems(FXCollections.observableArrayList(
-                "Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
-                "Azura \t\t(アクア)", "Benny \t\t(ブノワ)", "Beruka \t\t(ベルカ)", "Camilla \t\t(カミラ)", "Charlotte \t\t(シャーロッテ)",
-                "Effie \t\t\t(エルフィ)", "Elise \t\t(エリーゼ)", "Felicia \t\t(フェリシア)", "Flora \t\t(フローラ)", "Fuga \t\t(フウガ)",
-                "Gunter \t\t(ギュンター)", "Hana \t\t(カザハナ)", "Hayato \t\t(ツクヨミ)", "Hinata \t\t(ヒナタ)", "Hinoka \t\t(ヒノカ)",
-                "Izana \t\t(イザナ)", "Jakob \t\t(ジョーカー)", "Kaden \t\t(ニシキ)", "Kagero \t\t(カゲロウ)", "Kaze \t\t(スズカゼ)",
-                "Keaton \t\t(フランネル)", "Laslow \t\t(ラズワルド)", "Leo \t\t\t(レオン)", "Mozu \t\t(モズメ)", "Niles \t\t(ゼロ)",
-                "Nyx \t\t\t(ニュクス)", "Oboro \t\t(オボロ)", "Odin \t\t(オーディン)", "Orochi \t\t(オロチ)", "Peri \t\t\t(ピエリ)",
-                "Reina \t\t(ユウギリ)", "Rinkah \t\t(リンカ)", "Ryoma \t\t(リョウマ)", "Saizo \t\t(サイゾウ)", "Sakura \t\t(サクラ)",
-                "Scarlet \t\t(クリムゾン)", "Selena \t\t(ルーナ)", "Setsuna \t\t(セツナ)", "Shura \t\t(アシュラ)", "Silas \t\t(サイラス)",
-                "Subaki \t\t(ツバキ)", "Takumi \t\t(タクミ)", "Xander \t\t(マークス)", "Yukimura \t(ユキムラ)",
-                "----------------------------------",
-                "Kana [F] \t\t(カンナ女)", "Kana [M] \t\t(カンナ男)", "Asugi \t\t(グレイ)", "Caeldori \t\t(マトイ)", "Dwyer \t\t(ディーア)",
-                "Forrest \t\t(フォレオ)", "Hisame \t\t(ヒサメ)", "Ignatius \t\t(イグニス)", "Kiragi \t\t(キサラギ)", "Midori \t\t(ミドリコ)",
-                "Mitama \t\t(ミタマ)", "Nina \t\t(エポニーヌ)", "Ophelia \t\t(オフェリア)", "Percy \t\t(ルッツ)", "Rhajat \t\t(シャラ)",
-                "Selkie \t\t(キヌ)", "Shigure \t\t(シグレ)", "Shiro \t\t(シノノメ)", "Siegbert \t\t(ジークベルト)", "Soleil \t\t(ソレイユ)",
-                "Sophie \t\t(ゾフィー)", "Velouria \t\t(べロア)",
-                "---------------------------------",
-                "Marth \t\t(マルス)", "Ike \t\t\t(アイク)", "Lucina \t\t(ルキナ)", "Robin \t\t(ルフレ)",
-                "_________________________________",
-                "Faceless \t\t(ノスフェラトゥ)", "Kitsune \t\t(妖狐男)", "Wolfskin \t\t(ガルー男)", "Ninja \t\t(忍男)", "Merchant \t(大商人男)",
-                "Apothecary \t(薬商人男)", "Pegasus Knight(天馬武者女)", "Archer \t\t(弓使い男)", "Oni Savage \t(鬼人男)", "Kinshi Knight \t(金鵄武者女)",
-                "Lancer \t\t(槍術士男)", "Priestess \t\t(戦巫女)", "Shrine Maiden (巫女)", "Mage \t\t(呪い師男)", "Dark Mage \t(ダークマージ男)",
-                "Troubadour \t(ロッドナイト女)", "Soldier \t\t(ランサー男)", "Myrmidon \t(侍男)", "Maid \t\t(メイド女)", "Paladin \t\t(パラディン男)",
-                "Cavalier \t\t(ソシアルナイト男)", "Fighter \t\t(アクスファイター男)", "Knight \t\t(アーマーナイト男)",
-                "-----------------------------------",
-                "Old Man \t\t(村人おじいさん白)", "Old Woman \t(村人おばさん白)", "Girl \t\t\t(村人お姉さん白)", "Boy \t\t\t(村人お兄さん白)",
-                "Child \t\t(村人子供白)", "Old Man \t\t(村人おじいさん黒)", "Old Woman \t(村人おばさん黒)", "Girl \t\t\t(村人お姉さん黒)",
-                "Boy \t\t\t(村人お兄さん黒)", "Child \t\t(村人子供黒)", "Villager [F] \t(村人女)", "Villager [M] \t(村人男)",
-                "------------------------------------",
-                "Hans \t\t(ガンズ)", "Iago \t\t(マクベス)", "Garon \t\t(ガロン)", "Kotaro \t\t(コタロウ)", "Zola \t\t\t(ゾーラ)",
-                "Sumeragi \t(スメラギ)", "Arete \t\t(シェンメイ)", "Mikoto \t\t(ミコト)", "Anankos \t\t(善ハイドラ)", "Omozu \t\t(モズ)",
-                "Daniela \t\t(ダニエラ)", "Haitaka \t\t(ハイタカ)", "Kumagera \t(クマゲラ)", "Lloyd \t\t(ウィリアム)", "Llewelyn \t\t(ホルモン)",
-                "Gazak \t\t(カザック)", "Tarba \t\t(バンバ)", "Funke \t\t(ファンク)", "Daichi \t\t(ダイチ)", "Senno \t\t(セノウ)",
-                "Zhara \t\t(ヴァスハラ)", "Kilma \t\t(クーリア)", "Nichol \t\t(ナハト)", "Candace \t\t(ドラジェ)", "Lilith \t\t(リリス)",
-                "Lilith \t\t(リリス竜)", "Layla \t\t(ララ)", "Anthony \t\t(ロンタオ)", "Sage \t\t(虹の賢者)", "Cassita \t\t(カシータ)", "??? \t\t\t(フードマン)"
-        ));
+        newCharaField.setItems(FXCollections.observableArrayList(characters));
         pane.add(newCharaField, 2, 0, 1, 2);
         newCharaField.setPrefWidth(145);
         new AutoCompleteComboBox(newCharaField);
@@ -342,10 +269,7 @@ public class Main extends Application {
         soundComboBox.setValue("None (Default)");
         soundComboBox.setDisable(true);
 
-        /*
-         *buttons that will add the inputted line coded for
-         *a support & open a window to view support
-         */
+        //button that takes all the information given and codes dialogue
         Button supportButton = new Button("  Add Line  ");
 
         HBox hbox = new HBox(20);
@@ -686,14 +610,20 @@ public class Main extends Application {
                 if (chara2.equals("マイユニ女") || chara2.equals("マイユニ男")) {
                     chara2 = "username";
                 }
-
+                if (dialogue.contains("\\n")) {
+                    dialogue = dialogue.replace("\n", "");
+                }
+                else {
+                    dialogue = dialogue.replace("\n", "\\n");
+                }
+                System.out.print("First: " + dialogue);
                 //adds a "\n" where necessary(ish), if the user didn't input it already. This code doesn't
                 //place the "\n" correctly, it ends up in the middle of words sometimes. (can't find a fix for this)
                 Text txt = new Text(dialogueArea.getText());
                 int l = 0;
                 String s = "";
                 txt.setWrappingWidth(288);
-                if (!txt.getText().contains("\\n")) {
+                if (!dialogue.contains("\\n")) {
                     if (txt.getBoundsInLocal().getHeight() > 19.951171875) {
                         for (int i = 1; i <= dialogue.length(); i++) {
                             double height = txt.getBoundsInLocal().getHeight();
@@ -712,9 +642,11 @@ public class Main extends Application {
                         dialogue = dialogue.substring(0, l) + "\\n" + dialogue.substring(l, dialogue.length());
                     }
                 }
-
-                //replace a shit ton of words for syntax corrections (mostly for mentions of the avatar)
+                System.out.print("Second: " + dialogue);
+                //syntax corrections (mostly for mentions of the avatar)
                 dialogue = dialogue.replace("…", "...");
+                dialogue = dialogue.replace("’", "'");
+                dialogue = dialogue.replace("\\N", "\\n");
                 dialogue = dialogue.replace(" \\n", "\\n");
                 dialogue = dialogue.replace("\\n ", "\\n");
                 dialogue = dialogue.replace(" \\n ", "\\n");
@@ -728,6 +660,7 @@ public class Main extends Application {
                 dialogue = dialogue.replace("Kamui", "$Nu");
                 dialogue = dialogue.replace("corrin", "$Nu");
                 dialogue = dialogue.replace("kamui", "$Nu");
+                dialogue = dialogue.replace("$nu", "$Nu");
                 dialogue = dialogue.replace("lord/lady", "$GLord,Lady|");
                 dialogue = dialogue.replace("Lord/Lady", "$GLord,Lady|");
                 dialogue = dialogue.replace("lady/lord", "$GLord,Lady|");
@@ -989,11 +922,17 @@ public class Main extends Application {
                 aloneBtn.setSelected(false);
                 sweatBtn.setSelected(false);
                 blushingBtn.setSelected(false);
+                firstLine.setSelected(false);
+                aloneBtn.setDisable(true);
+                sameChara.setDisable(false);
 
-
+                //syntax corrections
+                while (supportLine.contains(" $") || supportLine.contains("| ")) {
+                    supportLine = supportLine.replace(" $", "$");
+                    supportLine = supportLine.replace("| ", "|");
+                }
                 //add coded dialogue to supportArea
                 supportArea.appendText(supportLine);
-
 
             }
         });
@@ -1120,7 +1059,7 @@ public class Main extends Application {
                 portraitViewer.getChildren().add(portrait4);
                 portrait4.setTranslateX(128);
 
-                //TODO: Position sweat and blush images according to character (46% done- main characters done)
+                //TODO: Position sweat and blush images according to character (46% done - main characters done)
                 final Image portrait5 = new Image(getClass().getResourceAsStream(portraitPath3));
                 final ImageView portrait6 = new ImageView(portrait5);
                 portrait6.setFitWidth(portrait5.getWidth() * 1.50);
@@ -1186,7 +1125,7 @@ public class Main extends Application {
                         "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
                         "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
                         "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
-                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Sad 2 (あらら)", "Closed Eyes (目閉)"};
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)"};
                 String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
@@ -1269,7 +1208,7 @@ public class Main extends Application {
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.getItems().add("Neutral 2 (通常2)");
                     if (chara.equals("ラズワルド")) {
-                        emotComboBox.getItems().add("Sad 2 (あらら)");
+                        emotComboBox.getItems().add("Distress 2 (あらら)");
                     }
                     emotComboBox.setValue("Neutral (通常)");
                 }
@@ -1306,7 +1245,7 @@ public class Main extends Application {
                         && !chara.equals("ニシキ") && !chara.equals("ハロルド") && !chara.equals("ラズワルド") && !chara.equals("ルッツ")
                         && !chara.equals("クリムゾン") && !chara.equals("アイク") && !chara.equals("シャーロッテ") && !chara.equals("ゼロ")
                         && !chara.equals("クロム右") && !chara.equals("クロム左") && !chara.equals("フェリシア") && !chara.equals("アズール")
-                        && !chara.equals("アズール") && !chara.equals("ラズワルド") && !chara.equals("フレデリク") && !chara.equals("リョウマ")) {
+                        && !chara.equals("アズール") && !chara.equals("ラズワルド") && !chara.equals("リョウマ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.setValue("Neutral (通常)");
@@ -1324,12 +1263,12 @@ public class Main extends Application {
                     int b = chara.indexOf(")");
                     chara = chara.substring(a, b);
                 }
-                
+
                 String[] delete = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)",
                         "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
                         "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
                         "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
-                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Sad 2 (あらら)", "Closed Eyes (目閉)"};
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)"};
                 String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
@@ -1412,7 +1351,7 @@ public class Main extends Application {
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.getItems().add("Neutral 2 (通常2)");
                     if (chara.equals("ラズワルド")) {
-                        emotComboBox.getItems().add("Sad 2 (あらら)");
+                        emotComboBox.getItems().add("Distress 2 (あらら)");
                     }
                     emotComboBox.setValue("Neutral (通常)");
                 }
@@ -1449,7 +1388,7 @@ public class Main extends Application {
                         && !chara.equals("ニシキ") && !chara.equals("ハロルド") && !chara.equals("ラズワルド") && !chara.equals("ルッツ")
                         && !chara.equals("クリムゾン") && !chara.equals("アイク") && !chara.equals("シャーロッテ") && !chara.equals("ゼロ")
                         && !chara.equals("クロム右") && !chara.equals("クロム左") && !chara.equals("フェリシア") && !chara.equals("アズール")
-                        && !chara.equals("アズール") && !chara.equals("ラズワルド") && !chara.equals("フレデリク") && !chara.equals("リョウマ")) {
+                        && !chara.equals("アズール") && !chara.equals("ラズワルド") && !chara.equals("リョウマ")) {
                     emotComboBox.getItems().removeAll(delete);
                     emotComboBox.setItems(FXCollections.observableArrayList(add));
                     emotComboBox.setValue("Neutral (通常)");
@@ -1465,6 +1404,7 @@ public class Main extends Application {
                 musicStage.close();
             }
         });
+
     }
 
 
