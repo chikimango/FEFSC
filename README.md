@@ -123,5 +123,3 @@ And that's it for effects. It might sound a bit daunting, but it's very easy to 
 When you're finished choosing the options for the dialogue you've inputted, click the "Add Line" button, and the program will take your dialogue and code it appropriately. The coded dialogue will be placed into the the area below the button. 
 Once you've finished adding all of your lines of dialogue, just copy the finished support and put it into FEITS to see it. 
 Be aware though: Even if the support works in FEITS it may not work correctly in the actual game. 
-
-If you encounter any errors, please tell me so I can fix them in a future release!
