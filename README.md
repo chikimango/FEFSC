@@ -34,6 +34,7 @@ This is to indicate a newline and is best done after you've finished typing all 
 
 If you don't add the "\n" this is how it'll look in FEITS and in-game.
 
+[Imgur](http://i.imgur.com/zKAkTQ9.png)
 
 
 ### First Line Button & Song Options
