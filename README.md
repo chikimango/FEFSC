@@ -7,7 +7,7 @@ A JavaFX program that assists in coding supports for Fire Emblem 3ds games
 
 > 1. Download IntelliJ Idea
 > 2. Create a new JavaFX project called FESC
-> 3. Extract the master into the project file and overwriting all files
+> 3. Extract the master into the project file and overwrite all files
 > 4. Go to *Build -> Build Artifacts* and build FESC as a JavaFX output
 
 # How to Use
