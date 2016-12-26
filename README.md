@@ -88,15 +88,19 @@ Now for Effects, here are all the options for the first box.
 
 > Add Sound Effect
 
+
 The second box has two options.
+
 > No other Effect: Does nothing
 
 > New Character Appears
 
 > Add Sound Effect
 
+
 First of all, **all of these options will happen _before_ your current dialogue appears. It is important to keep note of this for every option, because if you select an effect at the wrong time it could completely mess up the sequence of events for your support.** 
 To elaborate, I said to keep note the past tense in "Character 1 Left". So, let's say you want character 1 to leave after they say "Goodbye". After they leave you want character 2 to say "Wait". You should not choose the effect option when you're on the line "Goodbye", you want to select it when character 2 says "Wait", because the effect will happen before character 2 says anything. That's why it's in past tense.
+
 For the option "Character 1/2 appears", it's a bit different. Because the character is being initialized, you'll want to select it when the appearing character first says something. For example: Character 1 is alone and they say "Hello" then character 2 appears and says "Hello" as well. Since the effect happens before the character speaks, you're going to want to select the effect option when character 2 says "Hello." because if you select it when character 1 speaks, character 2 will appear prematurely.
 
 **Note: If you chose "Character 1/2 Left" and want them to reappear later, you have to choose "Character 1/2 Appears".**
