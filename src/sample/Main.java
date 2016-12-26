@@ -50,12 +50,12 @@ public class Main extends Application {
          *Choice Box that shows all the characters the user can choose
          *for the first character that appears in the support
          */
-        final Label character1 = new Label("1st Character:");
+        final Label character1 = new Label("    1st Character:");
         pane.add(character1, 0, 0);
         character1.setTranslateX(20);
 
         //final TextField characters1 = new TextField();
-        String characters [] = {"Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
+        String characters[] = {"Avatar [F] \t(マイユニ女)", "Avatar [M] \t(マイユニ男)", "Anna \t\t(アンナ)", "Arthur \t\t(ハロルド)", "Azama \t\t(アサマ)",
                 "Azura \t\t(アクア)", "Benny \t\t(ブノワ)", "Beruka \t\t(ベルカ)", "Camilla \t\t(カミラ)", "Charlotte \t\t(シャーロッテ)",
                 "Effie \t\t\t(エルフィ)", "Elise \t\t(エリーゼ)", "Felicia \t\t(フェリシア)", "Flora \t\t(フローラ)", "Fuga \t\t(フウガ)",
                 "Gunter \t\t(ギュンター)", "Hana \t\t(カザハナ)", "Hayato \t\t(ツクヨミ)", "Hinata \t\t(ヒナタ)", "Hinoka \t\t(ヒノカ)",
@@ -101,7 +101,7 @@ public class Main extends Application {
          *Choice Box that shows all the characters the user can choose
          *for the second character that appears in the support
          */
-        final Label character2 = new Label("2nd Character:");
+        final Label character2 = new Label("    2nd Character:");
         pane.add(character2, 0, 1);
         character2.setTranslateX(15);
 
@@ -124,16 +124,17 @@ public class Main extends Application {
         /*
          *Text Area where user inputs the dialogue line of the support
          */
-        Label dialogueLabel = new Label("Dialogue Line: ");
+        Label dialogueLabel = new Label("    Dialogue Line:");
         pane.add(dialogueLabel, 0, 3);
         dialogueLabel.setTranslateX(15);
+        dialogueLabel.setTranslateY(-35);
 
         final TextArea dialogueArea = new TextArea("");
         pane.add(dialogueArea, 1, 3, 3, 1);
         dialogueArea.setWrapText(true);
         dialogueArea.setPrefRowCount(2);
         dialogueArea.setMaxSize(309, 240);
-        dialogueArea.setPromptText("\tPaste One Line of Dialogue Here\r(Don't forget to add \"\\n\" if the text wraps)");
+        dialogueArea.setPromptText("\tPaste One Line of Dialogue Here\r\t     (add \"\\n\" if the text wraps)");
         dialogueArea.setFocusTraversable(false);
         dialogueArea.getStyleClass().add("textArea");
 
@@ -146,11 +147,32 @@ public class Main extends Application {
          */
         final RadioButton firstLine = new RadioButton("First Line");
         pane.add(firstLine, 0, 4, 2, 1);
-        firstLine.setTranslateX(20);
+        firstLine.setTranslateX(30);
+        firstLine.setTranslateY(-79);
 
-        Label chooseSong = new Label("      Choose a song:");
-        pane.add(chooseSong, 1, 4);
-        chooseSong.setTranslateX(-25);
+/*
+         *A radio button to ask user whether the first character appears alone
+         *in the first line or not
+         *****disabled when first line isn't pressed or fade to black isn't selected in effect options*****
+         */
+        final RadioButton aloneBtn = new RadioButton("Appears Alone");
+        pane.add(aloneBtn, 0, 7, 2, 1);
+        aloneBtn.setDisable(true);
+        aloneBtn.setTranslateX(225);
+        //aloneBtn.setTranslateY(45);
+
+        final Label aloneBtnReminder = new Label("Select \"Character 1 Appears\"");
+        pane.add(aloneBtnReminder, 2, 0, 1, 2);
+        aloneBtnReminder.setVisible(false);
+        aloneBtnReminder.setTranslateX(-185);
+        aloneBtnReminder.setTranslateY(450);
+        aloneBtnReminder.setStyle("-fx-font-size: 10pt;" +
+                "-fx-text-fill: FF5C59;");
+
+        Label chooseSong = new Label("Songs:");
+        pane.add(chooseSong, 0, 4);
+        chooseSong.setTranslateY(10);
+        chooseSong.setTranslateX(82);
 
         final ComboBox songComboBox = new ComboBox();
         songComboBox.setItems(FXCollections.observableArrayList(
@@ -161,8 +183,8 @@ public class Main extends Application {
                 "Strain E2", "Uncanny E1", "Uneasy E1"
                 )
         );
-        pane.add(songComboBox, 2, 4);
-        songComboBox.setTranslateX(-45);
+        pane.add(songComboBox, 1, 4);
+        songComboBox.setTranslateY(10);
         songComboBox.setValue("None");
         songComboBox.setDisable(true);
 
@@ -173,7 +195,8 @@ public class Main extends Application {
          *is being coded in the support line
          */
         Label speaker = new Label("Character Speaking:");
-        pane.add(speaker, 0, 6, 2, 2);
+        speaker.setTranslateX(-5);
+        pane.add(speaker, 0, 6, 2, 1);
 
         final ToggleGroup charaBtns = new ToggleGroup();
 
@@ -183,25 +206,13 @@ public class Main extends Application {
 
         final RadioButton chara2Btn = new RadioButton("2nd Character");
         chara2Btn.setToggleGroup(charaBtns);
-        pane.add(chara2Btn, 1, 7);
+        pane.add(chara2Btn, 2, 6);
 
         final RadioButton sameChara = new RadioButton("Same as Previous\nCharacter");
         sameChara.setToggleGroup(charaBtns);
-        pane.add(sameChara, 2, 6);
+        //pane.add(sameChara, 2, 6);
 
-        /*
-         *A radio button to ask user whether the first character appears alone
-         *in the first line or not
-         *****SHOULD BE OFF WHEN FIRST LINE IS NOT PRESSED*****
-         */
-        final RadioButton aloneBtn = new RadioButton("Appears Alone");
-        pane.add(aloneBtn, 2, 7);
-        aloneBtn.setDisable(true);
 
-        final Label aloneBtnReminder = new Label("Choose \"Character Appears\"\n" +
-                "in the \"Effects Options\" for\nwhen your second character\nfirst appears");
-        pane.add(aloneBtnReminder, 2, 0, 1, 2);
-        aloneBtnReminder.setVisible(false);
 
         /*
          *Ask user for which emotion the character that is
@@ -214,7 +225,7 @@ public class Main extends Application {
 
         final ComboBox emotComboBox = new ComboBox();
         emotComboBox.setItems(FXCollections.observableArrayList(
-                "Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"
+                "Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)", "Same as previous\nemotion"
         ));
         pane.add(emotComboBox, 1, 9, 1, 2);
         emotComboBox.setValue("Neutral (通常)");
@@ -233,8 +244,9 @@ public class Main extends Application {
          *fall
          ****IF USER CHOOSES "SOUND ADDITION" THEN THE NEXT CHOICE BOX WILL BE INTERACTABLE****
          */
-        Label effectLabel = new Label("Effects Options:");
+        Label effectLabel = new Label("Effects:");
         effectLabel.setWrapText(true);
+        effectLabel.setTranslateX(78);
         pane.add(effectLabel, 0, 12);
 
         final ComboBox effectComboBox1 = new ComboBox();
@@ -258,7 +270,7 @@ public class Main extends Application {
          *Ask the user which sound they'd like if they chose "sound
          *addition" in the previous choice box
          */
-        Label soundLabel = new Label("Sound Effects:");
+        Label soundLabel = new Label("        Sound Effects:");
         pane.add(soundLabel, 0, 13);
 
         final ComboBox soundComboBox = new ComboBox();
@@ -295,13 +307,11 @@ public class Main extends Application {
         final TextArea supportArea = new TextArea();
         pane.add(supportArea, 0, 16, 4, 1);
         supportArea.setWrapText(true);
-        supportArea.setPromptText("\r\t\t\tCheck the ReadMe.txt file if you ever need help");
         supportArea.setFocusTraversable(false);
 
         //play and stop buttons
         final Button playButton = new Button();
         final Image playButtonImage = new Image(this.getClass().getResourceAsStream("/play.png"));
-        //final Image stopButtonImage = new Image(this.getClass().getResourceAsStream("/stop.png"));
         playButton.setGraphic(new ImageView(playButtonImage));
         playButton.setStyle("-fx-background-radius: 16.4, 15;" + "-fx-border-radius: 15;"
                 + "-fx-border-width: 2;" + "-fx-padding: 0;" + "-fx-background-insets: -1.4, 0;");
@@ -316,22 +326,9 @@ public class Main extends Application {
         hbox3.setAlignment(Pos.BOTTOM_LEFT);
         hbox3.getChildren().addAll(playButton, stopButton);
         pane.add(hbox3, 2, 4);
-        hbox3.setTranslateX(100);
-        hbox3.setTranslateY(-3);
+        hbox3.setTranslateX(-25);
+        hbox3.setTranslateY(7);
 
-
-        //show aloneBtnReminder to user after they select aloneBtn
-        aloneBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (aloneBtn.isSelected() && firstLine.isSelected()) {
-                    aloneBtnReminder.setVisible(true);
-                }
-                if (!aloneBtn.isSelected() || !firstLine.isSelected()) {
-                    aloneBtnReminder.setVisible(false);
-                }
-            }
-        });
 
         //action handler for effectComboBox1 that turns on/off aloneBtn & effectComboBox2 & newCharaField
         effectComboBox1.setOnAction(new EventHandler<ActionEvent>() {
@@ -424,17 +421,42 @@ public class Main extends Application {
                     String prev = emotComboBox.getValue().toString();
                     String prev2 = characters1.getValue().toString();
 
-                    emotComboBox.getItems().remove("Same as previous\nemotion");
                     emotComboBox.setValue(null);
                     characters1.setValue(null);
                     characters1.setValue(prev2);
+                    emotComboBox.setValue(prev);
 
-                    if (prev.equals("Same as previous\nemotion")) {
-                        emotComboBox.setValue("Neutral (通常)");
-                    } else {
-                        emotComboBox.setValue(prev);
-                    }
                     effectComboBox1.setDisable(false);
+                }
+                aloneBtnReminder.setVisible(false);
+                String support = supportArea.getText();
+                String support2 = "";
+                if (support.contains("\\n$Wc$Sbv40|1000|$Fo1000|$Ws")) {
+                    int i = support.indexOf("\\n$Wc$Sbv40|1000|$Fo1000|$Ws");
+                    support2 = support.substring(i);
+                }
+
+                if (support.contains("|3$") && !support.contains("|7$") && chara2Btn.isSelected()) {
+                    aloneBtnReminder.setText("Select \"Character 2 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                if (!support.contains("|3$") && support.contains("|7$") && chara1Btn.isSelected()) {
+                    aloneBtnReminder.setText("Select \"Character 1 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                if (support2.contains("|3$") && chara2Btn.isSelected()&& !support2.contains("|7$")) {
+                    aloneBtnReminder.setText("Select \"Character 2 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                if (support2.contains("|7$") && chara1Btn.isSelected()&& !support2.contains("|3$")) {
+                    aloneBtnReminder.setText("Select \"Character 1 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                else if (support.equals("")) {
+                    aloneBtnReminder.setVisible(false);
+                }
+                else {
+                    aloneBtnReminder.setVisible(false);
                 }
             }
         });
@@ -445,17 +467,40 @@ public class Main extends Application {
                     String prev = emotComboBox.getValue().toString();
                     String prev2 = characters2.getValue().toString();
 
-                    emotComboBox.getItems().remove("Same as previous\nemotion");
                     emotComboBox.setValue(null);
                     characters2.setValue(null);
                     characters2.setValue(prev2);
+                    emotComboBox.setValue(prev);
 
-                    if (prev.equals("Same as previous\nemotion")) {
-                        emotComboBox.setValue("Neutral (通常)");
-                    } else {
-                        emotComboBox.setValue(prev);
-                    }
                     effectComboBox1.setDisable(false);
+                }
+                aloneBtnReminder.setVisible(false);
+                String support = supportArea.getText();
+                String support2 = "";
+                if (support.contains("\\n$Wc$Sbv40|1000|$Fo1000|$Ws")) {
+                    int i = support.indexOf("\\n$Wc$Sbv40|1000|$Fo1000|$Ws");
+                    support2 = support.substring(i);
+                }
+
+                if (support.contains("|3$") && !support.contains("|7$") && chara2Btn.isSelected()) {
+                    aloneBtnReminder.setText("Select \"Character 2 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                if (!support.contains("|3$") && support.contains("|7$") && chara1Btn.isSelected()) {
+                    aloneBtnReminder.setText("Select \"Character 1 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                System.out.print("SUPPORT: " + support2);
+                if (support2.contains("|3$") && chara2Btn.isSelected() && !support2.contains("|7$")) {
+                    aloneBtnReminder.setText("Select \"Character 2 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                if (support2.contains("|7$") && chara1Btn.isSelected() && !support2.contains("|3$")) {
+                    aloneBtnReminder.setText("Select \"Character 1 Appears\"");
+                    aloneBtnReminder.setVisible(true);
+                }
+                else if (support.equals("")) {
+                    aloneBtnReminder.setVisible(false);
                 }
             }
         });
@@ -612,13 +657,12 @@ public class Main extends Application {
                 }
                 if (dialogue.contains("\\n")) {
                     dialogue = dialogue.replace("\n", "");
-                }
-                else {
+                } else {
                     dialogue = dialogue.replace("\n", "\\n");
                 }
-                System.out.print("First: " + dialogue);
-                //adds a "\n" where necessary(ish), if the user didn't input it already. This code doesn't
-                //place the "\n" correctly, it ends up in the middle of words sometimes. (can't find a fix for this)
+
+                //adds a "\n" where necessary, if the user didn't input it already. This code doesn't place the "\n"
+                //correctly, it ends up in the middle of words sometimes, so users should place it manually.
                 Text txt = new Text(dialogueArea.getText());
                 int l = 0;
                 String s = "";
@@ -642,7 +686,7 @@ public class Main extends Application {
                         dialogue = dialogue.substring(0, l) + "\\n" + dialogue.substring(l, dialogue.length());
                     }
                 }
-                System.out.print("Second: " + dialogue);
+
                 //syntax corrections (mostly for mentions of the avatar)
                 dialogue = dialogue.replace("…", "...");
                 dialogue = dialogue.replace("’", "'");
@@ -686,7 +730,6 @@ public class Main extends Application {
                 dialogue = dialogue.replace("her/him", "$Ghim,her|");
                 dialogue = dialogue.replace("her/him", "$Ghim,her|");
 
-                //support line should have "\n" at the beginning if it's not the first line
 
                 //facial features effect
                 if (sweatBtn.isSelected()) {
@@ -705,7 +748,7 @@ public class Main extends Application {
                     emotion = "$E" + emotion.substring(emotion.indexOf("(") + 1, emotion.indexOf(")")) + "," + emotEffect + "|";
                 }
 
-                if (emotion.equals("通常") && !sweatBtn.isSelected()
+                if (emotion.contains("通常") && !sweatBtn.isSelected()
                         && !blushingBtn.isSelected() && !sameChara.isSelected()) {
                     emotion = "";
                 }
@@ -752,7 +795,7 @@ public class Main extends Application {
                             + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
 
-                //Lines after first line configuration
+                //configuration for lines after the first line
                 if (!aloneBtn.isSelected() && !firstLine.isSelected() && !sameChara.isSelected()
                         && chara1Btn.isSelected()) {
                     supportLine = "\\n$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
@@ -761,14 +804,51 @@ public class Main extends Application {
                         && chara2Btn.isSelected()) {
                     supportLine = "\\n$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
-
-                //SameChara btn configuration (sets up $k$p code instead of $k\n code
-                if (sameChara.isSelected() && emotComboBox.getValue() != "Same as previous\nemotion") {
-                    supportLine = "$p" + emotion + dialogue + "$k";
-                }
                 if (emotComboBox.getValue() == "Same as previous\nemotion") {
-                    supportLine = "$p" + dialogue + "$k";
+                    emotion = "Same as previous\nemotion";
                 }
+
+                //$k$p configuration
+                String doneSupport = supportArea.getText();
+                if (doneSupport.contains("$Ws")) {
+                    int i = doneSupport.lastIndexOf("$Ws");
+                    int n = doneSupport.lastIndexOf("|$Wa");
+                    String charaInstance = doneSupport.substring(i, n);
+                    String emotInstance = doneSupport.substring(n);
+                    if (charaInstance.contains(chara1) && chara1Btn.isSelected() && (!emotInstance.contains(emotion)
+                            || !emotion.equals("Same as previous\nemotion"))) {
+                        supportLine = "$p" + emotion + dialogue + "$k";
+                    }
+                    if (charaInstance.contains(chara1) && chara1Btn.isSelected() && (emotInstance.contains(emotion)
+                            || emotion.equals("Same as previous\nemotion"))) {
+                        supportLine = "$p" + dialogue + "$k";
+                    }
+                    if (charaInstance.contains(chara2) && chara2Btn.isSelected() && (!emotInstance.contains(emotion)
+                            || !emotion.equals("Same as previous\nemotion"))) {
+                        supportLine = "$p" + emotion + dialogue + "$k";
+                    }
+                    if (charaInstance.contains(chara2) && chara2Btn.isSelected() && (emotInstance.contains(emotion)
+                            || emotion.equals("Same as previous\nemotion"))) {
+                        supportLine = "$p" + dialogue + "$k";
+                    }
+                    if (charaInstance.contains(chara1) && chara2Btn.isSelected() && (emotComboBox.getValue() == ("Same as previous\nemotion"))) {
+                        if (!emotInstance.contains("$E")) {
+                            supportLine = "\\n$Ws" + chara2 + "|$Wa" + dialogue + "$k";
+                        } else {
+                            emotInstance = doneSupport.substring(n, doneSupport.lastIndexOf("|") + 1);
+                            supportLine = "\\n$Ws" + chara2 + emotInstance + dialogue + "$k";
+                        }
+                    }
+                    if (charaInstance.contains(chara2) && chara1Btn.isSelected() && (emotComboBox.getValue() == ("Same as previous\nemotion"))) {
+                        if (!emotInstance.contains("$E")) {
+                            supportLine = "\\n$Ws" + chara1 + "|$Wa" + dialogue + "$k";
+                        } else {
+                            emotInstance = doneSupport.substring(n, doneSupport.lastIndexOf("|") + 1);
+                            supportLine = "\\n$Ws" + chara1 + emotInstance + dialogue + "$k";
+                        }
+                    }
+                }
+
 
                 //Support Line effects configurations
                 if (effectComboBox1.getValue() == "Character 1\nAppears") {
@@ -828,13 +908,13 @@ public class Main extends Application {
                 if (effectComboBox1.getValue() == "Screen Fades\nto Black" && aloneBtn.isSelected()
                         && chara1Btn.isSelected()) {
                     supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara1 + "|$Wd$Ws" + chara2 +
-                            "|$Wd$w0|$Sbv100|1000|$Fi1000|" + "$t1$Wm" + chara1 + "|3$w0|$Ws"
+                            "|$Wd$w0|$Sbv100|1000|$Fi1000|$t1$Wm" + chara1 + "|3$w0|$Ws"
                             + chara1 + "|$Wa" + emotion + dialogue + "$k";
                 }
                 if (effectComboBox1.getValue() == "Screen Fades\nto Black" && aloneBtn.isSelected()
                         && chara2Btn.isSelected()) {
                     supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 +
-                            "|$Wd$w0|$Sbv100|1000|$Fi1000|" + "$t1$Wm" + chara2 + "|7$w0|$Ws"
+                            "|$Wd$w0|$Sbv100|1000|$Fi1000|$t1$Wm" + chara2 + "|7$w0|$Ws"
                             + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
 
@@ -918,13 +998,15 @@ public class Main extends Application {
                 effectComboBox2.setValue("No Other\nEffect");
                 songComboBox.setValue("None");
                 soundComboBox.setValue("None (Default)");
-                emotComboBox.setValue("Neutral (通常)");
                 aloneBtn.setSelected(false);
                 sweatBtn.setSelected(false);
                 blushingBtn.setSelected(false);
                 firstLine.setSelected(false);
                 aloneBtn.setDisable(true);
                 sameChara.setDisable(false);
+                songComboBox.setDisable(true);
+                aloneBtnReminder.setVisible(false);
+
 
                 //syntax corrections
                 while (supportLine.contains(" $") || supportLine.contains("| ")) {
@@ -933,7 +1015,6 @@ public class Main extends Application {
                 }
                 //add coded dialogue to supportArea
                 supportArea.appendText(supportLine);
-
             }
         });
 
@@ -951,6 +1032,7 @@ public class Main extends Application {
         portraitViewer.setPadding(new Insets(15, 15, 15, 15));
         final Scene scene2 = new Scene(portraitViewer, 256 * 1.50, 256 * 1.50);
         scene2.getStylesheets().add(this.getClass().getResource("font.css").toExternalForm());
+        stage2.getIcons().add(icon);
 
 
         Button viewPortrait = new Button("View Portrait?");
@@ -1106,6 +1188,7 @@ public class Main extends Application {
                 stage2.setResizable(false);
                 stage2.sizeToScene();
                 stage2.show();
+                stage2.setAlwaysOnTop(true);
             }
         });
 
@@ -1125,8 +1208,8 @@ public class Main extends Application {
                         "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
                         "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
                         "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
-                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)"};
-                String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)", "Same as previous\nemotion"};
+                String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)", "Same as previous\nemotion"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
                     emotComboBox.getItems().removeAll(delete);
@@ -1268,8 +1351,8 @@ public class Main extends Application {
                         "Angry (怒)", "Shouting (やけくそ)", "Singing (歌う)", "Smile 2 (笑2)", "Demonic (超キメ)", "Surprised (びっくり)",
                         "Sad (落胆)", "Closed Eyes (気絶)", "Angry 2 (怒2)", "Smirk (企み)", "Shy/Shifty-Eyes (拗ね)", "Smile 2 (差分)",
                         "Smile 2 (微笑)", " Distress 2 (苦2)", "Neutral 2 (通常2)", "Possessed (囚)", "Possessed 2 (囚2)", "Smirk (にやり)",
-                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)"};
-                String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)"};
+                        "Closed Eyes (思案)", "Angry 2 (超怒)", "Surprised (焦り)", "Distress 2 (あらら)", "Closed Eyes (目閉)", "Same as previous\nemotion"};
+                String[] add = {"Neutral (通常)", "Smile (笑)", "Distress (苦)", "Cocky (キメ)", "Angry (怒)", "Same as previous\nemotion"};
 
                 if (chara.equals("アクア") || chara.equals("シグレ")) {
                     emotComboBox.getItems().removeAll(delete);
@@ -1404,19 +1487,4 @@ public class Main extends Application {
                 musicStage.close();
             }
         });
-
     }
-
-
-/**
- * The main() method is ignored in correctly deployed JavaFX application.
- * main() serves only as fallback in case the application can not be
- * launched through deployment artifacts, e.g., in IDEs with limited FX
- * support. NetBeans ignores main().
- *
- * @param args the command line arguments
- */
-public static void main(String[]args){
-        launch(args);
-        }
-        }
