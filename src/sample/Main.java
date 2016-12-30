@@ -24,6 +24,8 @@ import javafx.scene.text.Text;
 //import org.apache.commons.lang3.StringUtils;
 import javafx.stage.*;
 import javafx.scene.image.*;
+import org.apache.commons.lang3.StringUtils;
+
 import java.net.URL;
 
 public class Main extends Application {
@@ -114,11 +116,19 @@ public class Main extends Application {
 
         final ComboBox newCharaField = new ComboBox();
         newCharaField.setItems(FXCollections.observableArrayList(characters));
-        pane.add(newCharaField, 2, 0, 1, 2);
+        pane.add(newCharaField, 2, 0);
         newCharaField.setPrefWidth(145);
         new AutoCompleteComboBox(newCharaField);
         newCharaField.setVisible(false);
         newCharaField.setValue("");
+
+        final ComboBox newCharaField2 = new ComboBox();
+        newCharaField2.setItems(FXCollections.observableArrayList(characters));
+        pane.add(newCharaField2, 2, 1);
+        newCharaField2.setPrefWidth(145);
+        new AutoCompleteComboBox(newCharaField2);
+        newCharaField2.setVisible(false);
+        newCharaField2.setValue("");
 
 
         /*
@@ -178,7 +188,7 @@ public class Main extends Application {
         songComboBox.setItems(FXCollections.observableArrayList(
                 "None", "Amb A1", "Amb A2", "Amb B1", "Amb B2", "Amb C1", "Amb C2",
                 "Amusia E1", "Daily A1", "Daily B1", "Daily E1", "Daily E2",
-                "Daily E3", "Fool E1", "Gag E1", "Gag E2", "Kindly E1", "Kindly E2",
+                "Daily E3", "Emergency E1", "Fool E1", "Gag E1", "Gag E2", "Kindly E1", "Kindly E2",
                 "Love E1", "Serious A1", "Serious B1", "Serious E1", "Strain E1",
                 "Strain E2", "Uncanny E1", "Uneasy E1"
                 )
@@ -187,6 +197,7 @@ public class Main extends Application {
         songComboBox.setTranslateY(10);
         songComboBox.setValue("None");
         songComboBox.setDisable(true);
+        songComboBox.setPrefWidth(135);
 
 
 
@@ -251,14 +262,17 @@ public class Main extends Application {
 
         final ComboBox effectComboBox1 = new ComboBox();
         effectComboBox1.setItems(FXCollections.observableArrayList(
-                "Default Line", "Screen Fades\nto Black", "Character 1\nAppears",
-                "Character 2\nAppears", "Character 1\nLeft", "Character 2\nLeft",
-                "Add Sound\nEffect")//, "Sound Effect")
+                "None (Default)", "Screen Fades to Black", "Character 1 Appears",
+                "Character 2 Appears", "Character 1 Left", "Character 2 Left",
+                "Chara 1 Replaced\nBy New Chara", "Chara 2 Replaced\nBy New Chara",
+                "Charas 1 & 2 Replaced\nBy New Charas", "Chara 1 Appears &\nNew Chara Appears",
+                "Chara 2 Appears &\nNew Chara Appears")
         );
         pane.add(effectComboBox1, 1, 12, 3, 1);
-        effectComboBox1.setValue("Default Line");
+        effectComboBox1.setValue("None (Default)");
+        effectComboBox1.setPrefWidth(152);
 
-        final ComboBox effectComboBox2 = new ComboBox();
+        /*final ComboBox effectComboBox2 = new ComboBox();
         effectComboBox2.setItems(FXCollections.observableArrayList(
                 "No Other\nEffect", "New Character\nAppears", "Add Sound\nEffect")//, "Sound Effect")
         );
@@ -279,7 +293,19 @@ public class Main extends Application {
         );
         pane.add(soundComboBox, 1, 13, 2, 1);
         soundComboBox.setValue("None (Default)");
-        soundComboBox.setDisable(true);
+        soundComboBox.setPrefWidth(152);
+
+        final RadioButton before = new RadioButton("Sound Plays Before Effect");
+        pane.add(before, 2, 13, 2, 1);
+        before.setDisable(true);
+        before.setStyle("-fx-font-size: 10pt;");
+        before.setTranslateY(-15);
+
+        final RadioButton after = new RadioButton("Sound Plays After Effect");
+        pane.add(after, 2, 13, 2, 1);
+        after.setDisable(true);
+        after.setStyle("-fx-font-size: 10pt;");
+        after.setTranslateY(15);
 
         //button that takes all the information given and codes dialogue
         Button supportButton = new Button("  Add Line  ");
@@ -329,48 +355,87 @@ public class Main extends Application {
         hbox3.setTranslateX(-25);
         hbox3.setTranslateY(7);
 
-
-        //action handler for effectComboBox1 that turns on/off aloneBtn & effectComboBox2 & newCharaField
-        effectComboBox1.setOnAction(new EventHandler<ActionEvent>() {
+        after.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if (after.isSelected()) {
+                    before.setSelected(false);
+                }
+            }
+        });
 
-                if (effectComboBox1.getValue() == "Screen Fades\nto Black" || firstLine.isSelected()) {
-                    aloneBtn.setDisable(false);
-                }
-                if (effectComboBox1.getValue() != "Screen Fades\nto Black" && !firstLine.isSelected()
-                        && effectComboBox2.getValue() != "Screen Fades\nto Black") {
-                    aloneBtn.setDisable(true);
-                }
-                if (effectComboBox1.getValue() != "Default Line") {
-                    effectComboBox2.setDisable(false);
-                }
-                if (effectComboBox1.getValue() == "Default Line") {
-                    effectComboBox2.setDisable(true);
-                    effectComboBox2.setValue("No Other\nEffect");
-                }
-                if (effectComboBox1.getValue() == "Add Sound\nEffect") {
-                    soundComboBox.setDisable(false);
-                }
-                if (effectComboBox1.getValue() != "Add Sound\nEffect"
-                        && effectComboBox2.getValue() != "Add Sound\nEffect") {
-                    soundComboBox.setDisable(true);
+        before.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (before.isSelected()) {
+                    after.setSelected(false);
                 }
             }
         });
 
         //action handler for effectComboBox1 that turns on/off aloneBtn & effectComboBox2 & newCharaField
-        effectComboBox2.setOnAction(new EventHandler<ActionEvent>() {
+        effectComboBox1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Text t = new Text(effectComboBox1.getValue().toString());
+                int length = (int)t.getBoundsInLocal().getWidth();
+                if (effectComboBox1.getValue() == "Screen Fades to Black" || effectComboBox1.getValue() == "Character 2 Appears"
+                        || effectComboBox1.getValue() == "Character 1 Appears" || effectComboBox1.getValue() == "Chara 1 Appears &\nNew Chara Appears"
+                        || effectComboBox1.getValue() == "Chara 2 Appears &\nNew Chara Appears") {
+                    effectComboBox1.setPrefWidth(length*1.60-23);
+                }
+                else if (effectComboBox1.getValue() == "Charas 1 & 2 Replaced\nBy New Charas") {
+                    effectComboBox1.setPrefWidth(length*1.60-35);
+                }
+                else if (effectComboBox1.getValue() == "None (Default)") {
+                    effectComboBox1.setPrefWidth(152);
+                }
+                else {
+                    effectComboBox1.setPrefWidth(length*1.60-8);
+                }
+
+                if (effectComboBox1.getValue() == "Screen Fades\nto Black" || firstLine.isSelected()) {
+                    aloneBtn.setDisable(false);
+                }
+                if (effectComboBox1.getValue() != "Screen Fades\nto Black" && !firstLine.isSelected()) {
+                    aloneBtn.setDisable(true);
+                }
+                if (effectComboBox1.getValue() != "None (Default)") {
+                    before.setDisable(false);
+                    after.setDisable(false);
+                    //effectComboBox2.setDisable(false);
+                }
+                if (effectComboBox1.getValue() == "None (Default)") {
+                    before.setDisable(true);
+                    after.setDisable(true);
+                }
+                if (effectComboBox1.getValue() == "Chara 1 Replaced\nBy New Chara" || effectComboBox1.getValue() == "Chara 2 Replaced\nBy New Chara" ||
+                        effectComboBox1.getValue() == "Chara 1 Appears &\nNew Chara Appears" || effectComboBox1.getValue() == "Chara 2 Appears &\nNew Chara Appears") {
+                    newCharaField.setVisible(true);
+                }
+                if (effectComboBox1.getValue() == "Charas 1 & 2 Replaced\nBy New Charas") {
+                    newCharaField.setVisible(true);
+                    newCharaField2.setVisible(true);
+                }
+                if (effectComboBox1.getValue() != "Charas 1 & 2 Replaced\nBy New Charas" && effectComboBox1.getValue() != "Chara 1 Replaced\nBy New Chara"
+                        && effectComboBox1.getValue() != "Chara 2 Replaced\nBy New Chara" && effectComboBox1.getValue() != "Chara 1 Appears &\nNew Chara Appears"
+                        && effectComboBox1.getValue() != "Chara 2 Appears &\nNew Chara Appears") {
+                    newCharaField.setVisible(false);
+                }
+                if (effectComboBox1.getValue() != "Charas 1 & 2 Replaced\nBy New Charas") {
+                    newCharaField2.setVisible(false);
+                    soundComboBox.getItems().remove("Damage &\nBody Fall");
+                }
+                if (effectComboBox1.getValue() == "Charas 1 & 2 Replaced\nBy New Charas")
+                    soundComboBox.getItems().add(4, "Damage &\nBody Fall");
+            }
+        });
+
+        //action handler for effectComboBox1 that turns on/off aloneBtn & effectComboBox2 & newCharaField
+        /*effectComboBox2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
-                if (effectComboBox2.getValue() == "Screen Fades\nto Black" || firstLine.isSelected()) {
-                    aloneBtn.setDisable(false);
-                }
-                if (effectComboBox1.getValue() != "Screen Fades\nto Black" && !firstLine.isSelected()
-                        && effectComboBox2.getValue() != "Screen Fades\nto Black") {
-                    aloneBtn.setDisable(true);
-                }
                 if (effectComboBox2.getValue() == "New Character\nAppears") {
                     newCharaField.setVisible(true);
                 }
@@ -385,7 +450,7 @@ public class Main extends Application {
                     soundComboBox.setDisable(true);
                 }
             }
-        });
+        });*/
 
         //firstLine btn that turns on/off the song ComboBox & aloneBtn
         firstLine.setOnAction(new EventHandler<ActionEvent>() {
@@ -401,12 +466,10 @@ public class Main extends Application {
                     aloneBtnReminder.setVisible(false);
                     aloneBtn.setSelected(false);
                 }
-                if (firstLine.isSelected() || effectComboBox1.getValue() == "Screen Fades\nto Black"
-                        || effectComboBox2.getValue() == "Screen Fades\nto Black") {
+                if (firstLine.isSelected() || effectComboBox1.getValue() == "Screen Fades\nto Black") {
                     aloneBtn.setDisable(false);
                 }
-                if (!firstLine.isSelected() && effectComboBox1.getValue() != "Screen Fades\nto Black"
-                        && effectComboBox2.getValue() != "Screen Fades\nto Black") {
+                if (!firstLine.isSelected() && effectComboBox1.getValue() != "Screen Fades\nto Black") {
                     aloneBtn.setDisable(true);
                 }
             }
@@ -490,7 +553,6 @@ public class Main extends Application {
                     aloneBtnReminder.setText("Select \"Character 1 Appears\"");
                     aloneBtnReminder.setVisible(true);
                 }
-                System.out.print("SUPPORT: " + support2);
                 if (support2.contains("|3$") && chara2Btn.isSelected() && !support2.contains("|7$")) {
                     aloneBtnReminder.setText("Select \"Character 2 Appears\"");
                     aloneBtnReminder.setVisible(true);
@@ -643,10 +705,14 @@ public class Main extends Application {
                 if (newChara.contains("(")) {
                     newChara = newChara.substring(newChara.indexOf("(") + 1, newChara.indexOf(")"));
                 }
+                String newChara2 = (newCharaField2.getValue().toString());
+                if (newChara2.contains("(")) {
+                    newChara2 = newChara2.substring(newChara2.indexOf("(") + 1, newChara2.indexOf(")"));
+                }
                 String supportLine = "";
-
+                String effect = "";
                 String emotEffect = "";
-                String song = songComboBox.getSelectionModel().getSelectedItem().toString();
+                String song = songComboBox.getSelectionModel().getSelectedItem().toString().toUpperCase();
                 song = song.replace(" ", "_");
 
                 if (chara1.equals("マイユニ女") || chara1.equals("マイユニ男")) {
@@ -851,111 +917,136 @@ public class Main extends Application {
 
 
                 //Support Line effects configurations
-                if (effectComboBox1.getValue() == "Character 1\nAppears") {
-                    supportLine = "\\n$Wm" + chara1 + "|3$Ws" + chara1
-                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Character 1 Appears" && chara1Btn.isSelected()) {
+                    effect = "\\n$Wm" + chara1 + "|3";
+                    supportLine =  effect + "$Ws" + chara1 + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 2\nAppears") {
-                    supportLine = "\\n$Wm" + chara2 + "|7$Ws" + chara2
-                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Character 2 Appears" && chara2Btn.isSelected()) {
+                    effect = "\\n$Wm" + chara2 + "|7";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 1\nAppears" && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Wm" + chara1 + "|3$Ws" + chara2
-                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Character 1 Appears" && chara2Btn.isSelected()) {
+                    effect = "\\n$Wm" + chara1 + "|3";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 2\nAppears" && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Wm" + chara2 + "|7$Ws" + chara1
-                            + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Character 2 Appears" && chara1Btn.isSelected()) {
+                    effect = "\\n$Wm" + chara2 + "|7";
+                    supportLine = effect + "$Ws" + chara1 + "|$Wa" + emotion + "$w0|" + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 1\nAppears" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + chara1 + "|3$w0|$Wm"
-                            + newChara + "|7$w0|$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 1 Appears &\nNew Chara Appears" /*&& effectComboBox2.getValue()
+                        == "New Character\nAppears"*/ && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + chara1 + "|3$w0|$Wm" + newChara + "|7$w0|";
+                    supportLine = effect + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters2.getValue();
                     characters2.setValue(newCharaField.getValue());
+                    newCharaField.setValue(n);
                 }
-                if (effectComboBox1.getValue() == "Character 2\nAppears" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + chara2 + "|7$w0|$Wm"
-                            + newChara + "|3$w0|$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 2 Appears &\nNew Chara Appears" /*&& effectComboBox2.getValue()
+                        == "New Character\nAppears"*/ && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + chara2 + "|7$w0|$Wm" + newChara + "|3$w0|";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters1.getValue();
                     characters1.setValue(newCharaField.getValue());
+                    newCharaField.setValue(n);
                 }
-                if (effectComboBox1.getValue() == "Character 1\nAppears" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + chara1 + "|3$w0|$Wm"
-                            + newChara + "|7$w0|$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 1 Appears &\nNew Chara Appears" /*&& effectComboBox2.getValue()
+                        == "New Character\nAppears"*/ && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + chara1 + "|3$w0|$Wm" + newChara + "|7$w0|";
+                    supportLine = effect + "$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters2.getValue();
                     characters2.setValue(newCharaField.getValue());
+                    newCharaField.setValue(n);
                 }
-                if (effectComboBox1.getValue() == "Character 2\nAppears" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + chara2 + "|7$w0|$Wm"
-                            + newChara + "|3$w0|$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 2 Appears &\nNew Chara Appears" /*&& effectComboBox2.getValue()
+                        == "New Character\nAppears"*/ && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$w0|$Ws" + chara2 + "|7$w0|$Wm" + newChara + "|3$w0|";
+                    supportLine = effect + "$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters1.getValue();
                     characters1.setValue(newCharaField.getValue());
+                    newCharaField.setValue(n);
+                }
+                if (effectComboBox1.getValue() == "Charas 1 & 2 Replaced\nBy New Charas" && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara + "|3$w0|$Wm"
+                            + newChara2 + "|7$w0|";
+                    supportLine = effect + "$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters1.getValue();
+                    Object n2 = characters2.getValue();
+                    characters1.setValue(newCharaField.getValue());
+                    characters2.setValue(newCharaField2.getValue());
+                    newCharaField.setValue(n);
+                    newCharaField2.setValue(n2);
+                }
+                if (effectComboBox1.getValue() == "Charas 1 & 2 Replaced\nBy New Charas" && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara + "|3$w0|$Wm"
+                            + newChara2 + "|7$w0|";
+                    supportLine = effect + "$Ws" + newChara2 + "|$Wa" + emotion + dialogue + "$k";
+                    Object n = characters1.getValue();
+                    Object n2 = characters2.getValue();
+                    characters1.setValue(newCharaField.getValue());
+                    characters2.setValue(newCharaField2.getValue());
+                    newCharaField.setValue(n);
+                    newCharaField2.setValue(n2);
                 }
 
                 //configures screen fade according to aloneBtn and charaBtns
-                if (effectComboBox1.getValue() == "Screen Fades\nto Black" && !aloneBtn.isSelected()
+                if (effectComboBox1.getValue() == "Screen Fades to Black" && !aloneBtn.isSelected()
                         && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Wd$w0|$Sbv100|1000|$Fi1000|"
-                            + "$t1$Wm" + chara2 + "|7$Wm" + chara1 + "|3$w0|$Ws" + chara1
-                            + "|$Wa" + emotion + dialogue + "$k";
+                    effect = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 + "|$Wd$w0|$Sbv100|1000|$Fi1000|$Wm"
+                    + chara2 + "|7$Wm" + chara1 + "|3";
+                            //"\\n$Wc$Sbv40|1000|$Fo1000|$Wd$w0|$Sbv100|1000|$Fi1000|" + "$t1$Wm" + chara2 + "|7$Wm" + chara1 + "|3$w0|";
+                    supportLine = effect + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Screen Fades\nto Black" && !aloneBtn.isSelected()
+                if (effectComboBox1.getValue() == "Screen Fades to Black" && !aloneBtn.isSelected()
                         && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Wd$w0|$Sbv100|1000|$Fi1000|"
-                            + "$t1$Wm" + chara2 + "|7$Wm" + chara1 + "|3$w0|$Ws" + chara2
-                            + "|$Wa" + emotion + dialogue + "$k";
+                    effect = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 + "|$Wd$w0|$Sbv100|1000|$Fi1000|$Wm"
+                            + chara2 + "|7$Wm" + chara1 + "|3";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Screen Fades\nto Black" && aloneBtn.isSelected()
+                if (effectComboBox1.getValue() == "Screen Fades to Black" && aloneBtn.isSelected()
                         && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara1 + "|$Wd$Ws" + chara2 +
-                            "|$Wd$w0|$Sbv100|1000|$Fi1000|$t1$Wm" + chara1 + "|3$w0|$Ws"
-                            + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                    effect = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 + "|$Wd$w0|$Sbv100|1000|$Fi1000|$Wm"
+                            + chara1 + "|3$w0|";
+                    supportLine = effect + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Screen Fades\nto Black" && aloneBtn.isSelected()
+                if (effectComboBox1.getValue() == "Screen Fades to Black" && aloneBtn.isSelected()
                         && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 +
-                            "|$Wd$w0|$Sbv100|1000|$Fi1000|$t1$Wm" + chara2 + "|7$w0|$Ws"
-                            + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                    effect = "\\n$Wc$Sbv40|1000|$Fo1000|$Ws" + chara2 + "|$Wd$Ws" + chara1 + "|$Wd$w0|$Sbv100|1000|$Fi1000|$Wm"
+                            + chara2 + "|7$w0|";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
 
 
                 //config for new character selection
-                if (effectComboBox1.getValue() == "Character 1\nLeft" && effectComboBox2.getValue()
-                        != "New Character\nAppears") {
-                    supportLine = supportLine.replace("\\n$", "$");
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|" + supportLine;
+                if (effectComboBox1.getValue() == "Character 1 Left" && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$w0|";
+                    supportLine =  effect + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (effectComboBox1.getValue() == "Character 2\nLeft" && effectComboBox2.getValue()
-                        != "New Character\nAppears") {
-                    supportLine = supportLine.replace("\\n$", "$");
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|" + supportLine;
+                if (effectComboBox1.getValue() == "Character 2 Left" && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara2 + "|$Wd$w0|";
+                    supportLine =  effect + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
                 }
 
-                if (effectComboBox1.getValue() == "Character 1\nLeft" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + newChara
-                            + "|3$w0|$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 1 Replaced\nBy New Chara" && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + newChara + "|3$w0|";
+                    supportLine = effect + "$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
                     characters1.setValue(newCharaField.getValue());
                 }
-                if (effectComboBox1.getValue() == "Character 1\nLeft" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + newChara
-                            + "|7$w0|$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 1 Replaced\nBy New Chara" && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara1 + "|$Wd$w0|$Wm" + newChara + "|7$w0|";
+                    supportLine = effect + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                     characters1.setValue(newCharaField.getValue());
                 }
-                if (effectComboBox1.getValue() == "Character 2\nLeft" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara1Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara
-                            + "|7$w0|$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 2 Replaced\nBy New Chara" && chara1Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara + "|7$w0|";
+                    supportLine = effect + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
                     characters2.setValue(newCharaField.getValue());
                 }
-                if (effectComboBox1.getValue() == "Character 2\nLeft" && effectComboBox2.getValue()
-                        == "New Character\nAppears" && chara2Btn.isSelected()) {
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara
-                            + "|7$w0|$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
+                if (effectComboBox1.getValue() == "Chara 2 Replaced\nBy New Chara" && chara2Btn.isSelected()) {
+                    effect = "\\n$Ws" + chara2 + "|$Wd$w0|$Wm" + newChara + "|7$w0|";
+                    supportLine = effect + "$Ws" + newChara + "|$Wa" + emotion + dialogue + "$k";
                     characters2.setValue(newCharaField.getValue());
                 }
-                if (effectComboBox2.getValue() == "New Character\nAppears" && effectComboBox1.getValue()
+                /*if (effectComboBox1.getValue() == "New Character\nReplaces Chara 1" && effectComboBox1.getValue()
                         == "Screen Fades\nto Black") {
                     supportLine = "\n\nYou have to select \"Character 1 or 2 Left\" in the 1st effect box to add a new character." +
                             " Check the ReadMe.txt file if you need help!";
@@ -964,38 +1055,85 @@ public class Main extends Application {
                         == "Add Sound\nEffect") {
                     supportLine = "\n\nYou have to select \"Character 1 or 2 Left\" in the 1st effect box to add a new character." +
                             " Check the ReadMe.txt file if you need help!";
-                }
+                }*/
+
 
                 //sound effect configuration
-                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue()
-                        == "Character 1\nLeft") {
-                    supportLine = supportLine.replace("\\n$", "$");
-                    supportLine = "\\n$Ws" + chara1 + "|$Wd$w0|" + "$Wc$w200|$SspSE_EVT_BODYFALL|$w800|"
-                            + supportLine;
+                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue() == "None (Default)"
+                        && chara1Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_BODYFALL|$w800|" + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue()
-                        == "Character 2\nLeft") {
-                    supportLine = supportLine.replace("\\n$", "$");
-                    supportLine = "\\n$Ws" + chara2 + "|$Wd$w0|" + "$Wc$w200|$SspSE_EVT_BODYFALL|$w800|"
-                            + supportLine;
+                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue() == "None (Default)"
+                        && chara2Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_BODYFALL|$w800|" + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
                 }
-                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue()
-                        != "Character 1\nLeft" && effectComboBox1.getValue() != "Character 2\nLeft") {
+                if (soundComboBox.getValue() == "Body Fall" && effectComboBox1.getValue() != "None (Default)"
+                        && (before.isSelected() || (!before.isSelected() && !after.isSelected()))) {
+                    supportLine = supportLine.replace("\\n$", "$");
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_BODYFALL|$w800|" + supportLine;
+                }
+                if (soundComboBox.getValue() == "Body Fall" && after.isSelected()) {
+                    supportLine = supportLine.replace(supportLine.substring(supportLine.indexOf("\\n$"), supportLine.lastIndexOf("$Ws")), "");
+                    supportLine = supportLine.replace("\\n$", "$");
+                    supportLine = effect + "$Wc$w200|$SspSE_EVT_BODYFALL|$w800|" + supportLine;
+
+                }
+
+                if (soundComboBox.getValue() == "Damage" && effectComboBox1.getValue() == "None (Default)"
+                        && chara1Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DAMAGE1|$w800|" + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                }
+                if (soundComboBox.getValue() == "Damage" && effectComboBox1.getValue() == "None (Default)"
+                        && chara2Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DAMAGE1|$w800|" + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                }
+                if (soundComboBox.getValue() == "Damage" && effectComboBox1.getValue() != "None (Default)"
+                        && (before.isSelected() || (!before.isSelected() && !after.isSelected()))) {
                     supportLine = supportLine.replace("\\n$", "$");
                     supportLine = "\\n$Wc$w200|$SspSE_EVT_DAMAGE1|$w800|" + supportLine;
                 }
-                if (soundComboBox.getValue() == "Damage") {
+                if (soundComboBox.getValue() == "Damage" && after.isSelected()) {
+                    supportLine = supportLine.replace(supportLine.substring(supportLine.indexOf("\\n$"), supportLine.lastIndexOf("$Ws")), "");
                     supportLine = supportLine.replace("\\n$", "$");
-                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DAMAGE1|$w800|" + supportLine;
+                    supportLine = effect + "$Wc$w200|$SspSE_EVT_DAMAGE1|$w800|" + supportLine;
                 }
-                if (soundComboBox.getValue() == "Dish Break") {
+
+                if (soundComboBox.getValue() == "Dish Break" && effectComboBox1.getValue() == "None (Default)"
+                        && chara1Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DISH_BREAK|$w800|" + "$Ws" + chara1 + "|$Wa" + emotion + dialogue + "$k";
+                }
+                if (soundComboBox.getValue() == "Dish Break" && effectComboBox1.getValue() == "None (Default)"
+                        && chara2Btn.isSelected()) {
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DISH_BREAK|$w800|" + "$Ws" + chara2 + "|$Wa" + emotion + dialogue + "$k";
+                }
+                if (soundComboBox.getValue() == "Dish Break" && effectComboBox1.getValue() != "None (Default)"
+                        && (before.isSelected() || (!before.isSelected() && !after.isSelected()))) {
                     supportLine = supportLine.replace("\\n$", "$");
                     supportLine = "\\n$Wc$w200|$SspSE_EVT_DISH_BREAK|$w800|" + supportLine;
                 }
+                if (soundComboBox.getValue() == "Dish Break" && after.isSelected()) {
+                    supportLine = supportLine.replace(supportLine.substring(supportLine.indexOf("\\n$"), supportLine.lastIndexOf("$Ws")), "");
+                    supportLine = supportLine.replace("\\n$", "$");
+                    supportLine = effect + "$Wc$w200|$SspSE_EVT_DISH_BREAK|$w800|" + supportLine;
+                }
+
+                if (soundComboBox.getValue() == "Damage &\nBody Fall") {
+                    supportLine = supportLine.replace(supportLine.substring(supportLine.indexOf("\\n$"), supportLine.lastIndexOf("$Ws")), "");
+                    supportLine = supportLine.replace("\\n$", "$");
+                    effect = effect.replace("\\n$", "$");
+                    supportLine = "\\n$Wc$w200|$SspSE_EVT_DAMAGE|$w800|" + effect + "$Wc$w200|$SspSE_EVT_BODY_FALL|$w800|"
+                            + supportLine;
+                }
+
+                //todo: song change after first line
+                if (songComboBox.getValue() != "None" && supportArea.getText().contains("EVT")) {
+
+                }
+
 
                 //reset all combo boxes & certain btns
-                effectComboBox1.setValue("Default Line");
-                effectComboBox2.setValue("No Other\nEffect");
+                effectComboBox1.setValue("None (Default)");
+                //effectComboBox2.setValue("No Other\nEffect");
                 songComboBox.setValue("None");
                 soundComboBox.setValue("None (Default)");
                 aloneBtn.setSelected(false);
@@ -1006,6 +1144,10 @@ public class Main extends Application {
                 sameChara.setDisable(false);
                 songComboBox.setDisable(true);
                 aloneBtnReminder.setVisible(false);
+                after.setSelected(false);
+                before.setSelected(false);
+                after.setDisable(true);
+                before.setDisable(true);
 
 
                 //syntax corrections
