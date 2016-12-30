@@ -73,30 +73,31 @@ For the effects options it's important that you remember this: **all of these op
 
 Options in Effects:
 
-> None (Default) - Does nothing.
+*None (Default)*: Does nothing.
 
-> Screen Fades to Black
+*Screen Fades to Black*: Does what the name implies.
 
-> Character 1 Appears - Character 1 gets initialized or re-initialized.
+*Character 1 Appears*: Character 1 gets initialized or re-initialized.
 
-> Character 2 Appears: Same as above except for character 2.
+*Character 2 Appears*: Same as above except for character 2.
 
-> Character 1 Left: Note the past tense. This makes character 1 dissapear, if you want them to reapear use "Character 1 Appears".
+*Character 1 Left*: Note the past tense. This makes character 1 dissapear, if you want them to reapear use "Character 1 Appears".
 
-> Character 2 Left: Same as above except for character 2.
+*Character 2 Left*: Same as above except for character 2.
 
-> Chara 1 Replaced by New Chara: Character 1 is replaced by a third character that you'll be able to choose.
+*Chara 1 Replaced by New Chara*: Character 1 is replaced by a third character that you'll be able to choose.
 
-> Chara 2 Replaced by New Chara: Same as above except for character 2
+*Chara 2 Replaced by New Chara*: Same as above except for character 2
 
-> Charas 1 & 2 Replaced by New Charas: Both characters 1 and 2 are replaced by a third and fourth character.
+*Charas 1 & 2 Replaced by New Charas*: Both characters 1 and 2 are replaced by a third and fourth character.
 
-> Chara 1 Appears & New Chara Appears: This will initialize or re-initialize character 1, and replace character 2 with a new character.
+*Chara 1 Appears & New Chara Appears*: This will initialize or re-initialize character 1, and replace character 2 with a new character.
 
-> Chara 2 Appears & New Chara Appears: Same as above except for character 2.
+*Chara 2 Appears & New Chara Appears*: Same as above except for character 2.
 
 
-Sound Effects: The sound effects work like the regular effects do; they all play before any dialogue is spoken. If you choose an effect and want a sound effect to play as well, you can select whether you want the sound to play before the effect or after it. 
+
+The sound effects work like the regular effects do; they all play before any dialogue is spoken. If you choose an effect and want a sound effect to play as well, you can select whether you want the sound to play before the effect or after it. 
 
 If you select "Chara 1/2 Replaced by New Chara" in the Effects options, you'll have the option of selecting the "Damage & Body Fall" sound effect, which is meant for when an enemy is killed and dissapears right away without saying anything. The damage sound effect plays first, then the effect, and then the body fall sound. 
 
