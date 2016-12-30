@@ -21,7 +21,7 @@ This is where you choose the names of the two characters who **appear first** in
 
 
 ### Dialogue Input:
-![Imgur](http://i.imgur.com/MBHa0p7.png)
+![Imgur](http://i.imgur.com/jqoGkWr.png)
 
 For this all you have to do is write in (or paste) the first line of dialogue from your support into the text box.
 **Make sure you do not exceed the box's proportions.** It will allow you to exceed two lines, but only two lines fit in the actual dialogue box from the game (and FEITS). The proportions of the box are the same as the proportions of the game's.
@@ -40,17 +40,17 @@ If you don't add the "\n" this is how it'll look in FEITS and in-game:
 ### First Line Button & Song Options
 ![Imgur](http://i.imgur.com/MhsfyVI.png)
 
-There isn't much to explain here, but it is important. **The "first line" button should only be selected if you are on the first line of your support. You only select it once when creating your entire support.** This button will add code to make the game initiallize the characters on the screen and what music is playing. **Again, it is very important that you press this at the beginning of your support or else the support will not work correctly in-game OR in FEITS.**
+**The "first line" button should only be selected if you are on the first line of your support. You only select it once when creating your entire support.** This button will add code to make the game initiallize the characters on the screen and what music is playing. **Again, it is very important that you press this at the beginning of your support or else the support will not work correctly in-game OR in FEITS.**
 
-I think the song choices is pretty self-explanatory, you just choose which song you want to play in your support in-game. You can choose none if you'd like, and there are play/pause buttons on the right to sample the songs.
+I think the song options are pretty self-explanatory, you just choose which song you want to play in your support in-game. You can choose none if you'd like, and there are play/pause buttons on the right to sample the songs.
 
 
 ### Character Speaking Buttons & The "Appears Alone" Button
-![Imgur](http://i.imgur.com/obgejEW.png)
+![Imgur](http://i.imgur.com/YVvXkAX.png)
 
 There's not much to expain here, just select which character is saying the dialogue you wrote.
 
-For the Appears Alone Button: This button will only be selectable when you've selected the First Line Button or when you've chosen the "Fade to Black" effect option, which I'll explain later. You only press this button if the speaking character appears alone during those two instances. **You'll need to initallize the other character in Effects Options _when they first appear_ by selecting "Character 1/2 Appears".**
+For the Appears Alone Button: This button will only be selectable when you've selected the First Line Button or when you've chosen the "Fade to Black" effect option. You only press this button if the speaking character appears alone during those two instances. **You'll need to initallize the other character in Effects Options _when they first appear_ by selecting "Character 1/2 Appears".**
 
 
 ### Displayed Emotion & Portrait Viewer
@@ -62,54 +62,43 @@ You can view the portraits of the character if you've selected the 1st character
 
 ![Imgur](http://i.imgur.com/6LLuY5Z.png?1)
 
-Which as you can see, displays either the 1st or 2nd character you've chosen in the character options and the emotion you've selected for them. 
+Which displays either the 1st or 2nd character depending on which button you have selected in the character options and the emotion you've selected for them. 
 Note: The "Same as Previous Emotion" option is for if you're using the same facial expression (including the blush/sweat) for multiple lines of dialogue. You don't have to use this option if you don't want to, it's just there for your convenience.
 
 
 ### Effects Options & Sound Effects
-![Imgur](http://i.imgur.com/GAP3foc.png)
+![Imgur](http://i.imgur.com/FVU9eS8.png)
 
-Explaining the effects is going to get lengthy, so first I'll explain the sound effects.
-There's an option in Effects for adding sound effects. When you select that option the Sound Effects box will be enabled. Just choose which one you'd like. There's no way to play the options, but I think the names are pretty self-explanatory as to what you should expect. 
+For the effects options it's important that you remember this: **all of these options will happen _before_ your current dialogue appears. It is important to keep note of this for every option, because if you select an effect at the wrong time it could completely mess up the sequence of events for your support.** 
 
-Now for Effects, here are all the options for the first box.
+Options in Effects:
 
-> Default Line: Does nothing.
+> None (Default) - Does nothing.
 
 > Screen Fades to Black
 
-> Character 1 Appears: This is really only used if character 2 was initiallized alone.
+> Character 1 Appears - Character 1 gets initialized or re-initialized.
 
-> Character 2 Appears: Same as above except for character 1.
+> Character 2 Appears: Same as above except for character 2.
 
-> Character 1 Left: Note the past tense. This makes character 1 dissapear from view.
+> Character 1 Left: Note the past tense. This makes character 1 dissapear, if you want them to reapear use "Character 1 Appears".
 
 > Character 2 Left: Same as above except for character 2.
 
-> Add Sound Effect
+> Chara 1 Replaced by New Chara: Character 1 is replaced by a third character that you'll be able to choose.
+
+> Chara 2 Replaced by New Chara: Same as above except for character 2
+
+> Charas 1 & 2 Replaced by New Charas: Both characters 1 and 2 are replaced by a third and fourth character.
+
+> Chara 1 Appears & New Chara Appears: This will initialize or re-initialize character 1, and replace character 2 with a new character.
+
+> Chara 2 Appears & New Chara Appears: Same as above except for character 2.
 
 
-The second box has two options.
+Sound Effects: The sound effects work like the regular effects do; they all play before any dialogue is spoken. If you choose an effect and want a sound effect to play as well, you can select whether you want the sound to play before the effect or after it. 
 
-> No other Effect: Does nothing
-
-> New Character Appears
-
-> Add Sound Effect
-
-
-First of all, **all of these options will happen _before_ your current dialogue appears. It is important to keep note of this for every option, because if you select an effect at the wrong time it could completely mess up the sequence of events for your support.** 
-To elaborate, I said to keep note the past tense in "Character 1 Left". So, let's say you want character 1 to leave after they say "Goodbye". After they leave you want character 2 to say "Wait". You should not choose the effect option when you're on the line "Goodbye", you want to select it when character 2 says "Wait", because the effect will happen before character 2 says anything. That's why it's in past tense.
-
-For the option "Character 1/2 appears", it's a bit different. Because the character is being initialized, you'll want to select it when the appearing character first says something. For example: Character 1 is alone and they say "Hello" then character 2 appears and says "Hello" as well. Since the effect happens before the character speaks, you're going to want to select the effect option when character 2 says "Hello." because if you select it when character 1 speaks, character 2 will appear prematurely.
-
-**Note: If you chose "Character 1/2 Left" and want them to reappear later, you have to choose "Character 1/2 Appears".**
-
-On "Screen Fades to Black": This will reinitialize all the characters, so if you want to add a new character or switch characters **do it when you select this option.** Remember, the screen will fade to black BEFORE the dialogue appears. Don't select it too early.
-
-For adding/switching characters anytime: When you want to switch in a new character you need to first choose the option "Character 1/2 Left" in the first option box, and then choose "New Character Appears" in the second box. This will make a third character box appear. Choose the new character there, the characters will switch places accordingly. If you ever want the old character to reappear, just do the same exact thing except choose the old character in the third character box.
-
-And that's it for effects.
+If you select "Chara 1/2 Replaced by New Chara" in the Effects options, you'll have the option of selecting the "Damage & Body Fall" sound effect, which is meant for when an enemy is killed and dissapears right away without saying anything. The damage sound effect plays first, then the effect, and then the body fall sound. 
 
 ### "Add Line" Button & Support Output
 ![Imgur](http://i.imgur.com/QoeWozt.png)
