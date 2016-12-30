@@ -73,27 +73,27 @@ For the effects options it's important that you remember this: **all of these op
 
 Options in Effects:
 
-*None (Default)*: Does nothing.
+***None (Default)***: Does nothing.
 
-*Screen Fades to Black*: Does what the name implies.
+***Screen Fades to Black***: Does what the name implies.
 
-*Character 1 Appears*: Character 1 gets initialized or re-initialized.
+***Character 1 Appears***: Character 1 gets initialized or re-initialized.
 
-*Character 2 Appears*: Same as above except for character 2.
+***Character 2 Appears***: Same as above except for character 2.
 
-*Character 1 Left*: Note the past tense. This makes character 1 dissapear, if you want them to reapear use "Character 1 Appears".
+***Character 1 Left***: Note the past tense. This makes character 1 dissapear, if you want them to reapear use "Character 1 Appears".
 
-*Character 2 Left*: Same as above except for character 2.
+***Character 2 Left***: Same as above except for character 2.
 
-*Chara 1 Replaced by New Chara*: Character 1 is replaced by a third character that you'll be able to choose.
+***Chara 1 Replaced by New Chara***: Character 1 is replaced by a third character that you'll be able to choose.
 
-*Chara 2 Replaced by New Chara*: Same as above except for character 2
+***Chara 2 Replaced by New Chara***: Same as above except for character 2
 
-*Charas 1 & 2 Replaced by New Charas*: Both characters 1 and 2 are replaced by a third and fourth character.
+***Charas 1 & 2 Replaced by New Charas***: Both characters 1 and 2 are replaced by a third and fourth character.
 
-*Chara 1 Appears & New Chara Appears*: This will initialize or re-initialize character 1, and replace character 2 with a new character.
+***Chara 1 Appears & New Chara Appears***: This will initialize or re-initialize character 1, and replace character 2 with a new character.
 
-*Chara 2 Appears & New Chara Appears*: Same as above except for character 2.
+***Chara 2 Appears & New Chara Appears***: Same as above except for character 2.
 
 
 
