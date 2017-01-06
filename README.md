@@ -11,7 +11,7 @@ FEFSC is a tool that assists in coding Fire Emblem Fates support conversations. 
 > 4. Go to *Build -> Build Artifacts* and build FESC as a JavaFX output
 
 # How to Use
-Hopefully this tool is relatively straightforward even if you don't have previous knowledge on how to code supports, but I'll be explaining how FESC works below in case anyone needs help. For reference, [here's](http://pastebin.com/0g7jf3i3) a guide on coding supports.
+Hopefully this tool is relatively straightforward even if you don't have previous knowledge on how to code supports, but I'll be explaining how it works below in case anyone needs help. For reference, [here's](http://pastebin.com/0g7jf3i3) a guide on coding supports.
 
 
 ### Character Options:
