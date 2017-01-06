@@ -1,7 +1,7 @@
 # FEFSC
 Fire Emblem Fates: Support Coder
 
-A JavaFX program that assists in coding supports for Fire Emblem 3ds games
+FEFSC is a JavaFX program that assists in support coding for Fire Emblem Fates. It's meant to significantly speed up the amount of time it takes to manually code supports.
 
 # How to Compile
 
