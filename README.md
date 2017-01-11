@@ -1,6 +1,4 @@
 # FEFSC
-Fire Emblem Fates: Support Coder
-
 FEFSC is a tool that assists in coding Fire Emblem Fates support conversations. It's meant to significantly speed up the amount of time it takes to manually code supports.
 
 # How to Compile
